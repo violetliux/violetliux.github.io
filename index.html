@@ -1303,6 +1303,16 @@ html.ab-lock{overflow:hidden}
 .or-pair.hc-pair3{grid-template-columns:repeat(3,minmax(0,1fr))}
 @media (max-width:620px){.or-pair.hc-pair3{grid-template-columns:repeat(2,minmax(0,1fr))}}
 /* hc-iter:end */
+/* mob:start · phone fixes */
+.hc-phone.hc-phone--fill{aspect-ratio:440/956;border-radius:12.5% / 5.75%}
+.hc-phone.hc-phone--fill iframe{position:absolute;inset:0;width:100%;height:100%;transform:none}
+@media (max-width:620px){
+.pcard{display:grid;padding-top:34px}
+.pcard-img,.pcard-body{grid-area:1/1}
+.pcard-img{align-self:start;width:auto;margin:18px 16px 0}
+.pcard-body{padding-top:calc(18px + (100% - 32px) * var(--ar,.625) + var(--sp-5))}
+}
+/* mob:end */
 </style>
 
 
@@ -1368,7 +1378,7 @@ html.ab-lock{overflow:hidden}
     <div class="wrap">
       <div class="work-head"><h2 id="work-h">Selected work</h2></div>
       <div class="work-list">
-        <a class="pcard" href="#huddle" style="--tone:var(--thistle);--tilt:-1.2deg">
+        <a class="pcard" href="#huddle" style="--tone:var(--thistle);--tilt:-1.2deg;--ar:0.5625">
           <div class="pcard-img cv-whole" style="aspect-ratio:5760/3240"><picture><img src="img/cover-huddle.png" alt="Huddle cover: the Huddle logo and tagline "Built for the hesitant hello" beside a phone home screen with the Huddle app icon" width="5760" height="3240" loading="lazy"></picture></div>
           <div class="pcard-body">
             <span class="pcard-tab label">Project 01</span>
@@ -1379,7 +1389,7 @@ html.ab-lock{overflow:hidden}
             <span class="pcard-link">View case study <span aria-hidden="true">→</span></span>
           </div>
         </a>
-        <a class="pcard" href="#ornata" style="--tone:var(--lavender-blush);--tilt:1deg">
+        <a class="pcard" href="#ornata" style="--tone:var(--lavender-blush);--tilt:1deg;--ar:0.7067">
           <div class="pcard-img cv-whole" style="aspect-ratio:2526/1785"><picture><img src="img/cover-ornata.png" alt="Ornata cover: the Ornata wordmark above three phones showing the home screen, the welcome screen and the Buyi pattern collection" width="2526" height="1785" loading="lazy"></picture></div>
           <div class="pcard-body">
             <span class="pcard-tab label">Project 02</span>
@@ -1390,7 +1400,7 @@ html.ab-lock{overflow:hidden}
             <span class="pcard-link">View case study <span aria-hidden="true">→</span></span>
           </div>
         </a>
-        <a class="pcard" href="#kingston-campass" style="--tone:var(--lavender-gray);--tilt:-.8deg">
+        <a class="pcard" href="#kingston-campass" style="--tone:var(--lavender-gray);--tilt:-.8deg;--ar:0.6354">
           <div class="pcard-img cv-whole" style="aspect-ratio:5760/3660"><picture><img src="img/cover-kingston.png" alt="Kingston Campass cover: the compass logo and name with credits for Neil Cai, Cathy Zhou and Violet Li, beside phone screens for routes, a daily planner, AR directions and the home screen" width="5760" height="3660" loading="lazy"></picture></div>
           <div class="pcard-body">
             <span class="pcard-tab label">Project 03</span>
@@ -2329,7 +2339,7 @@ html.ab-lock{overflow:hidden}
           <div class="meter"><div class="meter-row"><span>Round 2</span><div class="meter-track"><i style="width:97.5%"></i></div><b>97.5</b></div></div>
           <p>Always drawn to scale with the axis or the value shown.</p></div>
         <div class="ds-item"><span class="label">Project card</span>
-          <div class="pcard" style="gap:10px"><div class="pcard-img" style="aspect-ratio:16/7"><img src="img/cover-kingston.png" alt=""></div><div class="pcard-body" style="gap:6px"><b style="font-size:1.25rem;letter-spacing:-.02em">Title</b><span style="font-size:var(--t-small)">One-sentence description.</span><dl class="pcard-meta"><div><dt class="label">Discipline</dt><dd>UX/UI Design</dd></div><div><dt class="label">Context</dt><dd>Team project</dd></div></dl><span class="pcard-link">View case study <span aria-hidden="true">→</span></span></div></div>
+          <div class="pcard" style="gap:10px;--ar:0.4375"><div class="pcard-img" style="aspect-ratio:16/7"><img src="img/cover-kingston.png" alt=""></div><div class="pcard-body" style="gap:6px"><b style="font-size:1.25rem;letter-spacing:-.02em">Title</b><span style="font-size:var(--t-small)">One-sentence description.</span><dl class="pcard-meta"><div><dt class="label">Discipline</dt><dd>UX/UI Design</dd></div><div><dt class="label">Context</dt><dd>Team project</dd></div></dl><span class="pcard-link">View case study <span aria-hidden="true">→</span></span></div></div>
           <p>One per row, image above text, 16:10 preview with one dominant screen. Whole card is one link: border darkens and the arrow nudges on hover; titles never hide.</p></div>
         <div class="ds-item"><span class="label">Contact email</span>
           <div class="demo demo--paper" style="display:grid;gap:8px"><span class="contact-email">name@example.com</span><span style="display:flex;gap:8px"><span class="btn btn--sm">Copy email</span><span class="btn btn--sm btn--solid">Copied!</span></span></div>
@@ -2520,9 +2530,13 @@ var SITE = {
     ['node-id','starting-point-node-id','page-id'].forEach(function(k){ if (u.searchParams.get(k)) q.set(k, u.searchParams.get(k)); });
     q.set('scaling','contain'); q.set('content-scaling','fixed'); q.set('hide-ui','1'); q.set('embed-host','violet-li-portfolio');
     // iPhone 16 Pro Max prototypes: hide Figma's device frame and footer so the 440 × 956 screen fills our own frame
-    if (phone.classList.contains('hc-phone--pm')) { q.set('device-frame','false'); q.set('footer','false'); q.set('scaling','fit-width'); q.set('hotspot-hints','false'); q.set('viewport-controls','false'); }
+    // phones and tablets: Figma shows the screen edge to edge there, so the frame holds it whole instead of cropping a device
+    var fill = /Mobi|Android|iPhone|iPod/i.test(navigator.userAgent) || window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+    if (fill) phone.classList.add('hc-phone--fill');
+    if (fill || phone.classList.contains('hc-phone--pm')) { q.set('device-frame','false'); q.set('footer','false'); q.set('scaling','fit-width'); q.set('hotspot-hints','false'); q.set('viewport-controls','false'); }
     ifr.src = 'https://embed.figma.com' + u.pathname + '?' + q.toString();
   }
+  if (phone.classList.contains('hc-phone--fill')) return;
   // Figma draws its own iPhone inside a fixed 380 × 849 viewport; the frame crops to that device and scales it to fit
   if (phone.classList.contains('hc-phone--pm')) {
     var d = phone.dataset; phone.style.setProperty('--sl', d.sl); phone.style.setProperty('--st', d.st);
