@@ -1369,6 +1369,27 @@ html.ab-lock{overflow:hidden}
 .pcard-body{padding-top:calc(18px + (100% - 32px) * var(--ar,.625) + var(--sp-5))}
 }
 /* mob:end */
+
+/* cardfx: case study card interactions */
+@keyframes fxCardIn{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:none}}
+@keyframes fxItemIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+.cardfx .fxc{transition:transform .25s ease-out,box-shadow .25s ease-out,border-color .25s ease-out}
+.cardfx .fxc:not(.in){opacity:0}
+.cardfx .fxc.in{animation:fxCardIn .4s ease-out var(--fx-d,0s) backwards}
+.cardfx .fxc.in>*{animation:fxItemIn .3s ease-out backwards}
+.cardfx .fxc.in>:nth-child(1){animation-delay:calc(var(--fx-d,0s) + .1s)}
+.cardfx .fxc.in>:nth-child(2){animation-delay:calc(var(--fx-d,0s) + .2s)}
+.cardfx .fxc.in>:nth-child(3){animation-delay:calc(var(--fx-d,0s) + .3s)}
+.cardfx .fxc.in>:nth-child(n+4){animation-delay:calc(var(--fx-d,0s) + .4s)}
+@media (hover:hover){
+  .cardfx .hc-card.fxc:hover{transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--lavender-gray)}
+  .cardfx .hc-scope>.fxc:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 var(--lavender-gray)}
+}
+@media (prefers-reduced-motion:reduce){
+  .cardfx .fxc:not(.in){opacity:1}
+  .cardfx .fxc.in,.cardfx .fxc.in>*{animation:none}
+  .cardfx .fxc:hover{transform:none}
+}
 </style>
 
 
@@ -2884,4 +2905,26 @@ var SITE = {
   });
 })();
 /* hp:end */
+</script>
+<script>
+/* cardfx: reveal case study cards as they scroll into view */
+(function(){
+  if (!('IntersectionObserver' in window)) return;
+  var groups = document.querySelectorAll('.hc-cards, .hc-scope');
+  if (!groups.length) return;
+  document.documentElement.classList.add('cardfx');
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      // reveal on entering view, or if it was already scrolled past (e.g. a jump link)
+      if (e.isIntersecting || e.boundingClientRect.bottom < 0){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, {threshold:0.15});
+  groups.forEach(function(g){
+    Array.prototype.forEach.call(g.children, function(c, i){
+      c.classList.add('fxc');
+      c.style.setProperty('--fx-d', (i * 0.08) + 's');
+      io.observe(c);
+    });
+  });
+})();
 </script>
