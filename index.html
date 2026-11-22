@@ -1315,17 +1315,23 @@ html.ab-lock{overflow:hidden}
 @media (hover:none){.pg-folder:hover .pg-front{transform:none}.pg-folder:hover .pg-file--3{transform:rotate(-1.5deg)}.pg-folder.is-open .pg-front{transform:perspective(1200px) rotateX(14deg)}.pg-folder.is-open .pg-file--3{transform:translateY(-62px) rotate(-1deg)}}
 @media (prefers-reduced-motion:reduce){.pg-front,.pg-file,.pg-paper,.pg-key{transition:none!important}.pg-detail[open]{animation:none}}
 /* pg:end */
-/* ww:start · Playground: Wearwise case study inside its project panel */
-.ww-meta{margin:0 0 clamp(28px,3.4vw,40px)}
-.ww-sec{display:grid;gap:var(--sp-4);margin-top:clamp(48px,6vw,72px)}
-.ww-sec > .label{color:var(--english-violet)}
-.ww-sec h3{font-size:var(--t-h3);font-size:clamp(1.375rem,2.4vw,1.75rem);letter-spacing:-.02em;line-height:1.15;max-width:30ch}
-.ww-p{max-width:68ch;margin:0}
-.ww-sec .pg-media{margin:var(--sp-3) 0 0}
-.ww-sec .hc-hmw{margin-top:var(--sp-3)}
-.ww-sec .pg-pair{align-items:start}
-.ww-two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--sp-4)}
-@media (max-width:820px){.ww-two{grid-template-columns:minmax(0,1fr)}}
+/* ww:start · Playground: Wearwise panel, built from the Wearwise · Branding page */
+.ww-board{display:grid;gap:var(--sp-7);padding:clamp(16px,3.4vw,48px);border-radius:var(--r-md);background:#C7D5E4}
+.ww-sec{display:grid;gap:var(--sp-4)}
+.ww-sec h3{font-size:clamp(1.375rem,2.4vw,1.75rem);font-weight:500;letter-spacing:-.02em;line-height:1.15;color:#4E518B}
+.ww-board .pg-zoom{border-radius:0}
+.ww-swatches{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--sp-4)}
+.ww-swatches li{display:grid;gap:var(--sp-2);font-size:var(--t-caption);color:#4E518B}
+.ww-chip{display:block;height:clamp(48px,6vw,72px);border-radius:var(--r-sm);border:1px solid rgba(78,81,139,.25)}
+.ww-type{display:block;width:100%;max-width:820px;height:auto;margin-top:var(--sp-3)}
+.ww-hifi{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--sp-5)}
+.ww-hifi > div{display:grid;gap:var(--sp-4);align-content:start}
+.ww-hifi p{margin:0;max-width:46ch;color:#4E518B}
+.ww-book{margin-top:clamp(48px,6vw,72px)}
+.ww-book p{margin:0}
+.ww-book .pg-media{margin:var(--sp-3) 0 0}
+.ww-book-open{background:none;border:0;border-bottom:1px solid currentColor;border-radius:0;padding:0 0 1px;font:inherit;font-weight:500;cursor:pointer}
+@media (max-width:620px){.ww-hifi{grid-template-columns:minmax(0,1fr)}.ww-swatches{gap:var(--sp-3)}}
 /* ww:end */
 /* hp:start · Homepage interaction (from Violet's Notion doc "Homepage interaction") */
 .envelope{padding:0;font:inherit;color:inherit;cursor:pointer;-webkit-appearance:none;appearance:none;transform:translateY(var(--ey,0px)) rotate(-9deg);transition:transform .2s ease-out,box-shadow .2s}
@@ -1659,81 +1665,42 @@ html.ab-lock{overflow:hidden}
     </figure>
     <div class="pg-posters"><button type="button" class="pg-zoom " data-group="night" aria-label="Enlarge: Mystery poster: the word mystery in fragmented red letters that change scale"><img src="img/pg-poster-mystery.jpg" alt="Mystery poster: the word mystery in fragmented red letters that change scale" width="2700" height="3600" loading="lazy"></button><button type="button" class="pg-zoom " data-group="night" aria-label="Enlarge: Suspense poster: the word suspense repeated in arches that form a tunnel"><img src="img/pg-poster-suspense.jpg" alt="Suspense poster: the word suspense repeated in arches that form a tunnel" width="2700" height="3600" loading="lazy"></button><button type="button" class="pg-zoom " data-group="night" aria-label="Enlarge: Connection poster: the word connection following a winding path"><img src="img/pg-poster-connection.jpg" alt="Connection poster: the word connection following a winding path" width="2700" height="3600" loading="lazy"></button></div></div></dialog>
 
-  <dialog class="pg-detail" id="pg-d-wear" aria-labelledby="pg-d-wear-h"><div class="pg-d-bar"><span class="pg-tab-t">UX/UI · Mobile app · Human-centered AI</span><button type="button" class="btn btn--solid btn--sm pg-d-close">Close</button></div><div class="pg-d-body"><h2 id="pg-d-wear-h">Wearwise</h2><p class="pg-d-intro">What feels like me? Wearwise helps college students choose an outfit for a social event from clothes they already own. The AI suggests looks and explains why it picked each piece, while the final choice stays with the person. I designed two ways to get there, a voice-first assistant and a screen-based app, and tested both with participants.</p>
-    <div class="hc-overview ww-meta">
-      <div><span class="label">Project type</span><span>Human-centered AI study · Mobile app</span></div>
-      <div><span class="label">My role</span><span>Research, interaction design, UI and brand</span></div>
-      <div><span class="label">Methods</span><span>Interviews, precedent analysis, LLM trials, user testing</span></div>
-      <div><span class="label">Deliverables</span><span>Clickable prototype, brand system, process book</span></div>
-    </div>
+  <dialog class="pg-detail" id="pg-d-wear" aria-labelledby="pg-d-wear-h"><div class="pg-d-bar"><span class="pg-tab-t">UX/UI · Mobile app · Human-centered AI</span><button type="button" class="btn btn--solid btn--sm pg-d-close">Close</button></div><div class="pg-d-body"><h2 id="pg-d-wear-h">Wearwise</h2><p class="pg-d-intro">What feels like me? Wearwise is a closet companion for college students: an AI that suggests outfits from clothes they already own and tells them why it picked each piece. The final choice stays theirs.</p>
     <figure class="pg-media">
       <button type="button" class="pg-zoom" data-group="wear" aria-label="Enlarge: Wearwise poster with the cat mark, the tagline an AI that tells you why it picked each piece, and a phone showing a saved outfit"><img src="img/ww-poster.jpg" alt="Wearwise poster with the cat mark, the tagline an AI that tells you why it picked each piece, and a phone showing a saved outfit" width="2160" height="2160" loading="lazy"></button>
-      <figcaption>Wearwise, an AI that tells you why it picked each piece.</figcaption>
     </figure>
-
-    <section class="ww-sec" aria-labelledby="ww-s1">
-      <span class="label">01 · Understanding the problem</span>
-      <h3 id="ww-s1">Outfit advice only helps if it works with <em>what’s already in the closet</em>.</h3>
-      <p class="ww-p">I interviewed three college students about how they get dressed for social events and where AI could help. Three findings shaped the design.</p>
-      <div class="hc-cards hc-cards--3">
-        <div class="hc-card"><span class="hc-card-n">01</span><b>Use the clothes they own</b><p>One participant wanted help matching pieces, another disliked advice that meant buying more, and a third weighed style against the weather.</p></div>
-        <div class="hc-card"><span class="hc-card-n">02</span><b>Keep the final say</b><p>All three wanted to reject an outfit, keep the final choice, or change a look to suit their mood.</p></div>
-        <div class="hc-card"><span class="hc-card-n">03</span><b>Speak or tap, but see it</b><p>One preferred describing needs by voice, another preferred typing. Everyone wanted to see the result.</p></div>
-      </div>
-      <p class="hc-hmw"><span class="label">How might we</span>help students choose an outfit for an event and keep control of their style?</p>
-    </section>
-
-    <section class="ww-sec" aria-labelledby="ww-s2">
-      <span class="label">02 · AI precedents</span>
-      <h3 id="ww-s2">What should the AI do, and what should stay a button?</h3>
-      <p class="ww-p">I compared four AI products, including rabbit r1 and Alexa for Shopping, by what the AI does, how people interact with it, what they can change, and whose goal it serves. The lesson: the AI should clarify vague needs, explain trade-offs, and revise suggestions. Filters and buttons are controls, not LLM skills.</p>
-      <figure class="pg-media"><button type="button" class="pg-zoom" data-group="wear" aria-label="Enlarge: Precedent comparison of four AI products by what the AI does, interaction, what users can change, and whose goal it serves"><img src="img/ww-precedents.jpg" alt="Precedent comparison of four AI products by what the AI does, interaction, what users can change, and whose goal it serves" width="2160" height="1500" loading="lazy"></button></figure>
-    </section>
-
-    <section class="ww-sec" aria-labelledby="ww-s3">
-      <span class="label">03 · Two systems</span>
-      <h3 id="ww-s3">One wardrobe, <em>two ways to choose</em>.</h3>
-      <p class="ww-p">Both systems used the same task, wardrobe, and outfit options: dress for a birthday dinner at a casual restaurant, 13°C, with a 20-minute walk. Only the interface changed.</p>
-      <div class="ww-two">
-        <div class="hc-card hc-card--tone"><span class="hc-card-n">A</span><b>Voice-first AI</b><p>Users describe the event out loud, hear outfit options and the reasons behind them, ask follow-up questions, and change their needs mid-conversation.</p></div>
-        <div class="hc-card hc-card--tone"><span class="hc-card-n">B</span><b>GUI + AI</b><p>Users set the event, weather, style and walking needs in fields, compare outfit cards side by side, ask for reasons, and swap individual pieces.</p></div>
-      </div>
-      <p class="ww-p">I wrote shared rules for the AI in both systems: confirm the occasion and style before suggesting outfits, use only the supplied wardrobe, keep reasons short, and ask follow-up questions only when needed. Running the prompts in an LLM showed why. With a vague request (“I want to look nice, but still feel like myself”), the AI assumed a classic style before checking.</p>
-      <figure class="pg-media"><button type="button" class="pg-zoom" data-group="wear" aria-label="Enlarge: Shared AI behavior: spoken or typed input goes to the same LLM, with notes from a clear-request trial and an unclear-request trial"><img src="img/ww-shared-ai.jpg" alt="Shared AI behavior: spoken or typed input goes to the same LLM, with notes from a clear-request trial and an unclear-request trial" width="2160" height="1500" loading="lazy"></button><figcaption>Same content, two interfaces. Trials with a clear and an unclear request.</figcaption></figure>
-    </section>
-
-    <section class="ww-sec" aria-labelledby="ww-s4">
-      <span class="label">04 · The app flow</span>
-      <h3 id="ww-s4">From an empty closet to <em>“your outfit is set.”</em></h3>
-      <p class="ww-p">The app follows the journey from the interview map: identify the event, set needs and style, check clothes, combine them, check the outfit, then change and choose. Every suggestion shows why it fits, and every step has a way back.</p>
-      <figure class="pg-media"><button type="button" class="pg-zoom" data-group="wear" aria-label="Enlarge: Onboarding and wardrobe screens: welcome, log in, add clothes by photo or album, crop, edit items, connect a store, outfit ideas, wardrobe and profile"><img src="img/ww-flow-start.jpg" alt="Onboarding and wardrobe screens: welcome, log in, add clothes by photo or album, crop, edit items, connect a store, outfit ideas, wardrobe and profile" width="3453" height="1600" loading="lazy"></button><figcaption>Start and build the wardrobe: onboarding, adding clothes by photo, and browsing what you own.</figcaption></figure>
-      <figure class="pg-media"><button type="button" class="pg-zoom" data-group="wear" aria-label="Enlarge: Planning screens: what are you dressing for, a thinking state, two outfit options with why this fits, a comparison, replacing the top, and the updated outfit"><img src="img/ww-flow-plan.jpg" alt="Planning screens: what are you dressing for, a thinking state, two outfit options with why this fits, a comparison, replacing the top, and the updated outfit" width="4096" height="1540" loading="lazy"></button><figcaption>Plan an outfit: set the event, compare two options and their trade-offs, then swap a single piece and see what changed and what was kept.</figcaption></figure>
-      <figure class="pg-media"><button type="button" class="pg-zoom" data-group="wear" aria-label="Enlarge: Three your outfit confirmation screens and the Today home screen showing your dinner outfit is set"><img src="img/ww-flow-choose.jpg" alt="Three your outfit confirmation screens and the Today home screen showing your dinner outfit is set" width="3078" height="1758" loading="lazy"></button><figcaption>Choose and return home: the chosen outfit is confirmed, and it stays on Today with a way to change it.</figcaption></figure>
-    </section>
-
-    <section class="ww-sec" aria-labelledby="ww-s5">
-      <span class="label">05 · Brand and character</span>
-      <h3 id="ww-s5">A closet companion that <em>supports the task</em>.</h3>
-      <p class="ww-p">Wearwise’s cat sits on a hanger and appears only at welcomes, explanations, and completed tasks, so choices and reasons stay in focus. A calm palette of twilight, misty blue and cream, with Manrope and Plus Jakarta Sans, keeps the voice clear and friendly.</p>
-      <div class="pg-pair"><button type="button" class="pg-zoom" data-group="wear" aria-label="Enlarge: Brand sheet: the Wearwise logo, the cat in moods such as hello, thinking and delighted, the palette, and typefaces"><img src="img/ww-brand.jpg" alt="Brand sheet: the Wearwise logo, the cat in moods such as hello, thinking and delighted, the palette, and typefaces" width="2160" height="3639" loading="lazy"></button><button type="button" class="pg-zoom" data-group="wear" aria-label="Enlarge: Brand applications: horizontal and stacked logos, app icon, reverse mark, and the cat on welcome, explanation and completion screens"><img src="img/ww-brand-apps.jpg" alt="Brand applications: horizontal and stacked logos, app icon, reverse mark, and the cat on welcome, explanation and completion screens" width="2160" height="3108" loading="lazy"></button></div>
-    </section>
-
-    <section class="ww-sec" aria-labelledby="ww-s6">
-      <span class="label">06 · Testing and results</span>
-      <h3 id="ww-s6">What participants wanted next.</h3>
-      <p class="ww-p">Participants tried the voice AI with photos of their own clothes and the clickable GUI with illustrated clothing. They valued the personal photos and the explanations in voice, but long replies and repeated follow-ups felt overwhelming. In the GUI, buttons and clear actions felt more convenient, though the illustrations felt less personal.</p>
-      <div class="hc-cards hc-cards--3">
-        <div class="hc-card"><span class="hc-card-n">01</span><b>Personal clothing</b><p>Participants wanted to upload their own clothes. Planned change: replace the illustrations with clothing photos.</p></div>
-        <div class="hc-card"><span class="hc-card-n">02</span><b>Short reasons</b><p>Explanations helped, long replies didn’t. Planned change: give short reasons with optional detail.</p></div>
-        <div class="hc-card"><span class="hc-card-n">03</span><b>Clear next steps</b><p>“You’re all set” felt unclear. Planned change: show the chosen outfit with save and edit actions.</p></div>
-      </div>
-    </section>
-
-    <section class="ww-sec" aria-labelledby="ww-s7">
-      <span class="label">07 · Reflection</span>
-      <h3 id="ww-s7">AI explains. <em>The person decides.</em></h3>
-      <p class="ww-p">Choosing clothes is part of how people express themselves, so the AI should support that choice rather than make it. Fewer words did not always mean better understanding: participants still wanted clear reasons for the final outfit. Next, I would test both systems with the same wardrobe and measure understanding, correction, control, completion and time more consistently, and explore virtual try-on without promising an exact fit.</p>
-      <figure class="pg-media"><button type="button" class="pg-zoom" data-group="wear" aria-label="Enlarge: Process book cover asking what feels like me, with a speech bubble help me dress for a birthday dinner and a phone showing the updated outfit"><img src="img/ww-cover.jpg" alt="Process book cover asking what feels like me, with a speech bubble help me dress for a birthday dinner and a phone showing the updated outfit" width="2880" height="2000" loading="lazy"></button><figcaption>A little help getting dressed. The final choice stays yours.</figcaption></figure>
+    <div class="ww-board">
+      <section class="ww-sec" aria-labelledby="ww-s1"><h3 id="ww-s1">One companion. Three moods.</h3>
+        <button type="button" class="pg-zoom" data-group="wear" aria-label="Enlarge: The Wearwise cat in three moods: hello, thinking and delighted"><img src="img/ww-moods.jpg" alt="The Wearwise cat in three moods: hello, thinking and delighted" width="2556" height="700" loading="lazy"></button>
+      </section>
+      <section class="ww-sec" aria-labelledby="ww-s2"><h3 id="ww-s2">Typography &amp; color palette</h3>
+        <ul class="ww-swatches" aria-label="The Wearwise palette">
+          <li><span class="ww-chip" style="background:#4E518B"></span><span>Twilight #4E518B</span></li>
+          <li><span class="ww-chip" style="background:#C7D5E4"></span><span>Misty blue #C7D5E4</span></li>
+          <li><span class="ww-chip" style="background:#FBF8F1"></span><span>Cream #FBF8F1</span></li>
+        </ul>
+        <img class="ww-type" src="img/ww-type.jpg" alt="Typefaces: Manrope, a clear voice and a familiar face, and Plus Jakarta Sans, simple words and reasons you can understand" width="2132" height="234" loading="lazy">
+      </section>
+      <section class="ww-sec" aria-labelledby="ww-s3"><h3 id="ww-s3">The logo, in light and dark.</h3>
+        <button type="button" class="pg-zoom" data-group="wear" aria-label="Enlarge: The Wearwise logo: horizontal, stacked, app icon and reverse"><img src="img/ww-logos.jpg" alt="The Wearwise logo: horizontal, stacked, app icon and reverse" width="2560" height="1608" loading="lazy"></button>
+      </section>
+      <section class="ww-sec" aria-labelledby="ww-s4"><h3 id="ww-s4">A familiar face in the app.</h3>
+        <button type="button" class="pg-zoom" data-group="wear" aria-label="Enlarge: The cat on three app screens: a welcome, an explanation of why an outfit works, and a saved outfit"><img src="img/ww-app-cards.jpg" alt="The cat on three app screens: a welcome, an explanation of why an outfit works, and a saved outfit" width="2556" height="1380" loading="lazy"></button>
+      </section>
+      <section class="ww-sec" aria-labelledby="ww-s5"><h3 id="ww-s5">High-fidelity experience</h3>
+        <div class="ww-hifi">
+          <div><p>Wearwise helps you plan an outfit with clothes you own. You can compare options and see why each piece fits your plans.</p><button type="button" class="pg-zoom" data-group="wear" aria-label="Enlarge: Hands holding a phone showing the Wearwise welcome screen with clothing pieces"><img src="img/ww-hifi-plan.jpg" alt="Hands holding a phone showing the Wearwise welcome screen with clothing pieces" width="1140" height="1424" loading="lazy"></button></div>
+          <div><p>You can change a piece, review the new suggestion, and save your outfit. The cat offers a little guidance. The final choice stays yours.</p><button type="button" class="pg-zoom" data-group="wear" aria-label="Enlarge: Hands holding a phone showing the Wearwise home screen asking what is the plan"><img src="img/ww-hifi-home.jpg" alt="Hands holding a phone showing the Wearwise home screen asking what is the plan" width="1140" height="1424" loading="lazy"></button></div>
+        </div>
+      </section>
+    </div>
+    <section class="ww-sec ww-book" aria-labelledby="ww-s6"><h3 id="ww-s6">Process book</h3>
+      <p><button type="button" class="link ww-book-open">Click here to explore the whole process</button></p>
+      <figure class="pg-media">
+        <button type="button" class="pg-zoom ww-book-cover" data-group="wear-book" aria-label="Enlarge: Process book page 1, Cover: what feels like me?"><img src="img/ww-book-01.jpg" alt="Process book page 1, Cover: what feels like me?" width="2160" height="1500" loading="lazy"></button>
+        <figcaption>From interviews to two prototypes and testing, in 20 pages.</figcaption>
+      </figure>
+      <div hidden><button type="button" class="pg-zoom" data-group="wear-book" tabindex="-1" aria-label="Enlarge: Process book page 2, Contents"><img src="img/ww-book-02.jpg" alt="Process book page 2, Contents" width="2160" height="1500" loading="lazy"></button><button type="button" class="pg-zoom" data-group="wear-book" tabindex="-1" aria-label="Enlarge: Process book page 3, 01 Project overview"><img src="img/ww-book-03.jpg" alt="Process book page 3, 01 Project overview" width="2160" height="1500" loading="lazy"></button><button type="button" class="pg-zoom" data-group="wear-book" tabindex="-1" aria-label="Enlarge: Process book page 4, 02 Understanding the problem"><img src="img/ww-book-04.jpg" alt="Process book page 4, 02 Understanding the problem" width="2160" height="1500" loading="lazy"></button><button type="button" class="pg-zoom" data-group="wear-book" tabindex="-1" aria-label="Enlarge: Process book page 5, 03 Problem definition"><img src="img/ww-book-05.jpg" alt="Process book page 5, 03 Problem definition" width="2160" height="1500" loading="lazy"></button><button type="button" class="pg-zoom" data-group="wear-book" tabindex="-1" aria-label="Enlarge: Process book page 6, 04 AI precedents"><img src="img/ww-book-06.jpg" alt="Process book page 6, 04 AI precedents" width="2160" height="1500" loading="lazy"></button><button type="button" class="pg-zoom" data-group="wear-book" tabindex="-1" aria-label="Enlarge: Process book page 7, 05 System A: voice-first AI"><img src="img/ww-book-07.jpg" alt="Process book page 7, 05 System A: voice-first AI" width="2160" height="1500" loading="lazy"></button><button type="button" class="pg-zoom" data-group="wear-book" tabindex="-1" aria-label="Enlarge: Process book page 8, 06 System B: GUI + AI"><img src="img/ww-book-08.jpg" alt="Process book page 8, 06 System B: GUI + AI" width="2160" height="1500" loading="lazy"></button><button type="button" class="pg-zoom" data-group="wear-book" tabindex="-1" aria-label="Enlarge: Process book page 9, 07 Shared AI behavior"><img src="img/ww-book-09.jpg" alt="Process book page 9, 07 Shared AI behavior" width="2160" height="1500" loading="lazy"></button><button type="button" class="pg-zoom" data-group="wear-book" tabindex="-1" aria-label="Enlarge: Process book page 10, 08 Evaluation"><img src="img/ww-book-10.jpg" alt="Process book page 10, 08 Evaluation" width="2160" height="1500" loading="lazy"></button><button type="button" class="pg-zoom" data-group="wear-book" tabindex="-1" aria-label="Enlarge: Process book page 11, 09 Results and findings"><img src="img/ww-book-11.jpg" alt="Process book page 11, 09 Results and findings" width="2160" height="1500" loading="lazy"></button><button type="button" class="pg-zoom" data-group="wear-book" tabindex="-1" aria-label="Enlarge: Process book page 12, 10 Reflection"><img src="img/ww-book-12.jpg" alt="Process book page 12, 10 Reflection" width="2160" height="1500" loading="lazy"></button><button type="button" class="pg-zoom" data-group="wear-book" tabindex="-1" aria-label="Enlarge: Process book page 13, Appendix: clear trial"><img src="img/ww-book-13.jpg" alt="Process book page 13, Appendix: clear trial" width="2160" height="1500" loading="lazy"></button><button type="button" class="pg-zoom" data-group="wear-book" tabindex="-1" aria-label="Enlarge: Process book page 14, Appendix: unclear trial"><img src="img/ww-book-14.jpg" alt="Process book page 14, Appendix: unclear trial" width="2160" height="1500" loading="lazy"></button><button type="button" class="pg-zoom" data-group="wear-book" tabindex="-1" aria-label="Enlarge: Process book page 15, Appendix: interview records"><img src="img/ww-book-15.jpg" alt="Process book page 15, Appendix: interview records" width="2160" height="1500" loading="lazy"></button><button type="button" class="pg-zoom" data-group="wear-book" tabindex="-1" aria-label="Enlarge: Process book page 16, Appendix: test evidence"><img src="img/ww-book-16.jpg" alt="Process book page 16, Appendix: test evidence" width="2160" height="1500" loading="lazy"></button><button type="button" class="pg-zoom" data-group="wear-book" tabindex="-1" aria-label="Enlarge: Process book page 17, Appendix: proposed revisions"><img src="img/ww-book-17.jpg" alt="Process book page 17, Appendix: proposed revisions" width="2160" height="1500" loading="lazy"></button><button type="button" class="pg-zoom" data-group="wear-book" tabindex="-1" aria-label="Enlarge: Process book page 18, Appendix: product sources"><img src="img/ww-book-18.jpg" alt="Process book page 18, Appendix: product sources" width="2160" height="1500" loading="lazy"></button><button type="button" class="pg-zoom" data-group="wear-book" tabindex="-1" aria-label="Enlarge: Process book page 19, Appendix: AI-use disclosure"><img src="img/ww-book-19.jpg" alt="Process book page 19, Appendix: AI-use disclosure" width="2160" height="1500" loading="lazy"></button><button type="button" class="pg-zoom" data-group="wear-book" tabindex="-1" aria-label="Enlarge: Process book page 20, Back cover"><img src="img/ww-book-20.jpg" alt="Process book page 20, Back cover" width="2160" height="1500" loading="lazy"></button></div>
     </section>
   </div></dialog>
 
@@ -2928,6 +2895,12 @@ var SITE = {
   });
 })();
 /* pg:end */
+/* ww:start · Wearwise: the process-book link opens the book in the enlarged view */
+(function(){
+  var open = document.querySelector('.ww-book-open'), cover = document.querySelector('.ww-book-cover');
+  if (open && cover) open.addEventListener('click', function(){ cover.click(); });
+})();
+/* ww:end */
 /* hp:start · Homepage interaction: hero movement, the envelope letter, stacking folders, contact-link previews */
 (function(){
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)'), wide = window.matchMedia('(min-width: 821px)');
