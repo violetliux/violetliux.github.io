@@ -1613,6 +1613,18 @@ h4,.or-change-text h4,.kc-opt-text h4,.folder h3,.ds-sec > h2,.ab-dlg-body h3,.a
 .co-lines path{fill:none;stroke:var(--japanese-violet);stroke-width:1}
 @media (max-width:1000px){.bento-tile.bt-4{grid-column:span 6}.bento-intro.bt-4,.bento-tile.bt-8{grid-column:span 12}.bento-tile.bt-r2{grid-row:auto}}
 @media (max-width:700px){.bento-tile.bt-5,.bento-tile.bt-6,.bento-tile.bt-7{grid-column:span 12}.bento-intro--plain{padding:0}.bento-tile{padding:var(--sp-5)}.co-fig{grid-template-columns:minmax(0,var(--w,240px)) minmax(110px,120px);column-gap:var(--sp-5)}.co-fig[data-side="l"]{grid-template-columns:minmax(110px,120px) minmax(0,var(--w,240px))}}
+/* Baker's Pride: illustrated three-step flow (how cake details reached the bakery) */
+.rs-steps--ill{gap:var(--sp-6)}
+.rs-steps--ill .rs-step{padding:0;border:0;border-radius:0;background:none;justify-items:center;text-align:center;gap:var(--sp-2)}
+.rs-steps--ill .rs-step::before,.rs-steps--ill .rs-step::after{content:none}
+.rs-ill{display:block;width:100%;max-width:360px;height:auto;aspect-ratio:3/2;margin-bottom:var(--sp-4)}
+.rs-node{position:relative;display:flex;justify-content:center;width:100%;margin-bottom:var(--sp-3)}
+.rs-steps--ill .mk-n{width:36px;height:36px;margin:0;font-size:.875rem}
+.rs-steps--ill .rs-step+.rs-step .rs-node::before{content:"";position:absolute;top:50%;right:calc(50% + 34px);width:calc(100% + var(--sp-6) - 68px);height:1px;background:var(--lavender-gray)}
+.rs-steps--ill .rs-step b{font-size:1.125rem}
+.rs-steps--ill .rs-step>span:last-child{max-width:30ch}
+.rs-steps--ill+figcaption{margin-top:var(--sp-4)}
+@media (max-width:760px){.rs-steps--ill{gap:var(--sp-7)}.rs-steps--ill .rs-step+.rs-step .rs-node::before{display:none}.rs-ill{max-width:320px}}
 </style>
 
 
@@ -2462,7 +2474,7 @@ h4,.or-change-text h4,.kc-opt-text h4,.folder h3,.ds-sec > h2,.ab-dlg-body h3,.a
     </div>
     <div class="hc-block">
       <h3 class="hc-h3">How cake details reached the bakery.</h3>
-      <figure class="rs-flow"><ol class="rs-steps" aria-label="How cake details reached the bakery, in three steps"><li class="rs-step"><span class="mk-n">1</span><b>Phone or counter</b><span>Discuss the occasion, size, and flavour.</span></li><li class="rs-step"><span class="mk-n">2</span><b>Examples and reference photos</b><span>Work out what the cake should look like.</span></li><li class="rs-step"><span class="mk-n">3</span><b>Decorator review</b><span>Check what the bakery can make.</span></li></ol><figcaption class="fnote">Staff interviews surfaced several ways cake details could reach the decorator. The diagram shows a typical set of handoffs. <a href="https://www.figma.com/board/ea0mqPhspcn7jbsGi3CBpY/Research---Observation?node-id=0-1" target="_blank" rel="noopener">Baker’s Pride research board <span aria-hidden="true">↗</span></a></figcaption></figure>
+      <figure class="rs-flow"><ol class="rs-steps rs-steps--ill" aria-label="How cake details reached the bakery, in three steps"><li class="rs-step"><img class="rs-ill" src="img/bp-flow-phone.webp" alt="Illustration: a baker on the phone at the counter, taking notes beside a cake stand" width="768" height="512" loading="lazy"><span class="rs-node"><span class="mk-n">1</span></span><b>Phone or counter</b><span>Discuss the occasion, size, and flavour.</span></li><li class="rs-step"><img class="rs-ill" src="img/bp-flow-album.webp" alt="Illustration: a customer and a baker pointing at cake photos in an album" width="768" height="512" loading="lazy"><span class="rs-node"><span class="mk-n">2</span></span><b>Examples and reference photos</b><span>Work out what the cake should look like.</span></li><li class="rs-step"><img class="rs-ill" src="img/bp-flow-make.webp" alt="Illustration: a decorator studying a cake sketch next to piping tools and a finished cake" width="768" height="512" loading="lazy"><span class="rs-node"><span class="mk-n">3</span></span><b>Decorator review</b><span>Check what the bakery can make.</span></li></ol><figcaption class="fnote">Staff interviews surfaced several ways cake details could reach the decorator. The diagram shows a typical set of handoffs. <a href="https://www.figma.com/board/ea0mqPhspcn7jbsGi3CBpY/Research---Observation?node-id=0-1" target="_blank" rel="noopener">Baker’s Pride research board <span aria-hidden="true">↗</span></a></figcaption></figure>
       <p class="fnote">Research: in-store observation, four customer interviews, three staff interviews and competitor research.</p>
     </div>
   </div></section>
