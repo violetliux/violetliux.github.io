@@ -1752,7 +1752,7 @@ h4,.or-change-text h4,.kc-opt-text h4,.folder h3,.ds-sec > h2,.ab-dlg-body h3,.a
 @media (prefers-reduced-motion:reduce){.pc-pic,.pc-note,.pc-more span{transition:none}}
 /* pc:end */
 /* ==========================================================================
-   spf:start · Footer sign-off: a pen signs "Violet" above the footer line
+   spf:start · Footer sign-off: a pen writes "Thanks for scrolling." above the footer line
    ========================================================================== */
 .spf{--spf-pen-hi:#ffffff;--spf-pen-mid:#f4f0f2;--spf-pen-lo:#cfc6cc;--spf-pen-edge:#b2a7ae;position:relative;overflow:clip;container-type:inline-size;display:flex;flex-direction:column}
 .spf-main{display:flex;justify-content:center;padding:clamp(40px,6cqw,80px) 20px clamp(8px,1.5cqw,16px)}
@@ -3151,7 +3151,7 @@ h4,.or-change-text h4,.kc-opt-text h4,.folder h3,.ds-sec > h2,.ab-dlg-body h3,.a
 <footer class="foot band spf">
   <div class="spf-main">
     <div class="spf-stage">
-      <svg class="spf-svg" role="img" aria-label="Signature: Violet"></svg>
+      <svg class="spf-svg" role="img" aria-label="Signature: Thanks for scrolling."></svg>
       <button type="button" class="spf-again" aria-label="Sign again"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 8a5.5 5.5 0 1 0 1.7-4"/><path d="M2.2 1.8v2.6h2.6"/></svg>Sign again</button>
     </div>
   </div>
@@ -3755,14 +3755,14 @@ var SITE = {
   measure();
 })();
 /* lt:end */
-/* spf:start · Footer sign-off: a pen writes "Violet" when the footer comes into view, then rests; after that you can write with it.
+/* spf:start · Footer sign-off: a pen writes "Thanks for scrolling." when the footer comes into view, then rests; after that you can write with it.
    Ported to plain JS from the Signature Pen Footer component. Handwriting glyphs derived from EMS Allure
    (Sheldon B. Michaels, SVG by Windell H. Oskay), after Allura by Rob Leuschke, TypeSETit, all SIL Open Font License 1.1. */
 (function(){
   var root = document.querySelector('.spf'); if (!root) return;
   var stage = root.querySelector('.spf-stage'), svg = root.querySelector('.spf-svg'), again = root.querySelector('.spf-again'), stampEl = root.querySelector('.spf-stamp');
-  var WORD = 'Violet', DURATION = 2.4;
-  var GLYPHS = {"V":[737, "54 454 0 529 25 611 73 646 189 668 302 677 391 677 447 655 469 649|331 718 337 586 299 482 258 410 211 290 164 167 142 82 145 -9 186 -38 277 -38 400 32 532 154 677 343 784 507 844 598 895 662 939 696 983 724 1002 724"],"i":[249, "-31 183 38 236 60 328 -38 85 -19 22 54 6 132 69 183 129 217 183|123 476 95 438"],"o":[391, "195 337 142 365 66 315 -6 233 -41 161 -57 76 13 9 101 41 183 110 230 208 239 246 239 284 220 284|167 158 183 101 214 72 255 76 296 110 359 183"],"l":[261, "-25 176 91 265 239 428 346 589 394 662 381 709 312 718 243 674 148 532 41 340 -28 198 -50 85 -22 25 44 19 120 54 195 132 230 183"],"e":[346, "66 170 148 211 217 249 252 306 239 350 180 356 63 287 16 252 -35 192 -66 139 -72 88 -50 44 32 9 170 44 214 82 277 135 315 183"],"t":[290, "-31 183 19 224 54 261 110 337 183 457 217 510 183 517 9 151 -6 66 19 22 98 28 192 110 258 183|54 346 258 356"]};
+  var WORD = 'Thanks for scrolling.', DURATION = 3.6;
+  var GLYPHS = {".":[224, "145 63 129 38"],"T":[554, "57 378 9 425 -3 501 38 592 113 646 198 677 287 690 466 687 639 665 806 662 860 674 825 690 743 580 734 539 728 485 743 463|529 570 450 539 391 476 324 353 239 205 180 66 180 25 198 0 230 22 268 63"],"a":[526, "495 183 457 132 406 79 331 32 271 19 243 63 255 142 296 274 277 243 176 145 69 57 -19 19 -63 66 -57 154 35 261 148 331 230 356 312 356 324 343"],"c":[346, "243 306 239 350 198 365 101 328 -16 208 -47 170 -72 110 -66 66 -47 25 57 16 186 57 268 123 315 183"],"f":[334, "-110 -365 -60 -321 9 -94 104 154 198 369 277 517 328 617 419 696 466 718 523 696 507 598 406 444 290 321 220 261 173 220 117 192 25 183 28 208 208 205 306 217"],"g":[469, "306 350 195 353 69 287 -16 205 -57 164 -79 110 -60 57 -19 19 91 69 176 158 265 252 287 274 318 274 164 -85 35 -331 -22 -381 -72 -410 -117 -416 -167 -381 -148 -280 -79 -220 22 -132 85 -88 258 22 369 110 438 183"],"h":[561, "-31 183 113 315 343 482 447 605 469 702 394 718 324 662 255 586 180 457 101 309 13 32 110 148 192 252 287 315 328 334 350 312 340 261 290 183 261 76 284 19 350 19 413 63 482 129 529 183"],"i":[249, "-31 183 38 236 60 328 -38 85 -19 22 54 6 132 69 183 129 217 183|123 476 95 438"],"k":[356, "-31 183 32 252 98 337|73 356 158 356 271 428 381 542 438 627 450 696 406 728 318 696 249 617 183 498 126 394 19 139 -19 13 25 54 113 173 214 284 290 343 340 346|139 249 186 44 258 -85 362 -148 428 -148 457 -120 460 -101 457 -66"],"l":[261, "-25 176 91 265 239 428 346 589 394 662 381 709 312 718 243 674 148 532 41 340 -28 198 -50 85 -22 25 44 19 120 54 195 132 230 183"],"n":[580, "148 328 41 25 183 186 271 280 334 318 381 337 394 312 331 195 290 101 293 47 328 16 387 25 450 69 513 132 548 183"],"o":[391, "195 337 142 365 66 315 -6 233 -41 161 -57 76 13 9 101 41 183 110 230 208 239 246 239 284 220 284|167 158 183 101 214 72 255 76 296 110 359 183"],"r":[369, "-31 183 35 287 154 463 47 391 47 365 60 356 258 353 145 214 82 101 98 22 186 28 296 132 337 183"],"s":[302, "-31 183 9 217 35 261 66 328 117 394 249 447 293 454 343 444 350 413 343 381 328 365|54 274 73 233 161 183 198 135 195 88 151 35 79 -6 32 -28 -25 -31 -35 -19 -35 16 -16 35"]};
   var ASCENT = 800, SPACE = 378, JOIN = 16, NIB = 26, CONE = 300, RAD = 74, ANGLE = -31, NS = 'http://www.w3.org/2000/svg';
   function r1(v){ return Math.round(v * 10) / 10; }
   function smoothCubics(pts){
