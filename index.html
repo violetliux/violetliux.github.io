@@ -1698,11 +1698,10 @@ h4,.or-change-text h4,.kc-opt-text h4,.folder h3,.ds-sec > h2,.ab-dlg-body h3,.a
 .lt-paper::after{content:"";position:absolute;inset:0;opacity:.35;mix-blend-mode:multiply;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .55 0 0 0 0 .47 0 0 0 0 .4 0 0 0 .35 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 .lt-photo{position:absolute;z-index:3;top:-4cqi;right:calc(-1 * min(10cqi,var(--lt-m) - 8px));width:37cqi;margin:0;padding:2.2cqi 2.2cqi 8cqi;background:#FFFDF9;box-shadow:0 1px 0 rgba(60,40,50,.08),0 12px 22px -10px rgba(30,16,26,.5);transform:rotate(4deg)}
 .lt-photo img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;background:var(--lavender-blush)}
-.lt-head{display:grid;place-content:center;height:50cqi;padding:6cqi 12cqi 0 6cqi}
-.lt-hi{display:grid;justify-items:center;font-family:var(--f-serif);font-weight:400;letter-spacing:0;color:var(--japanese-violet)}
-.lt-hi-a{font-style:italic;font-size:clamp(1.5rem,8.4cqi,2.6rem);line-height:1.1}
-.lt-hi-b{font-size:clamp(1.25rem,7.2cqi,2.2rem);line-height:1.05;letter-spacing:.05em;text-transform:uppercase}
-.lt-body{max-width:76cqi;margin:2cqi auto 0;font-family:var(--f-serif);font-style:italic;font-size:clamp(.875rem,3.55cqi,1.07rem);line-height:1.65;color:var(--japanese-violet)}
+.lt-head{display:flex;flex-direction:column;justify-content:center;height:50cqi;padding:6cqi 36cqi 0 6cqi}
+.lt-hi{font-family:var(--f-serif);font-weight:400;font-size:var(--t-h2);line-height:var(--lh-h2);letter-spacing:var(--ls-h2);color:var(--japanese-violet)}
+.lt-hi em{font-style:italic}
+.lt-body{max-width:76cqi;margin:2cqi auto 0;font-family:var(--f-sans);font-size:var(--t-body-l);line-height:var(--lh-body-l);color:var(--japanese-violet)}
 .lt-sign{margin:auto 0 0;padding:30cqi 8cqi 11cqi;font-family:var(--f-serif);font-style:italic;font-size:clamp(.875rem,3.6cqi,1.1rem);line-height:1.2;letter-spacing:.01em;color:var(--japanese-violet)}
 .lt-cue{display:none}
 /* live: the stage is pinned under the nav and JS moves each layer from the scroll position */
@@ -1897,7 +1896,7 @@ h4,.or-change-text h4,.kc-opt-text h4,.folder h3,.ds-sec > h2,.ab-dlg-body h3,.a
       <article class="lt-letter" aria-labelledby="lt-hi">
         <span class="lt-paper" aria-hidden="true"></span>
         <figure class="lt-photo"><img src="img/portrait.jpg" alt="Portrait of Violet in a black dress on a museum staircase, beside framed mosaic panels" width="720" height="900"></figure>
-        <div class="lt-head"><h2 class="lt-hi" id="lt-hi"><span class="lt-hi-a">Hi, I’m</span> <span class="lt-hi-b">Violet.</span></h2></div>
+        <div class="lt-head"><h2 class="lt-hi" id="lt-hi">Hi, I’m <em>Violet</em>.</h2></div>
         <p class="lt-body">I'm a UX designer pursuing my MFA at SCAD, with a background in design marketing from Kingston University in London. That background shapes how I approach design: understanding what matters to people, then figuring out how an experience can support them.</p>
         <p class="lt-sign">violetli.design</p>
       </article>
