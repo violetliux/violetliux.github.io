@@ -1662,6 +1662,125 @@ h4,.or-change-text h4,.kc-opt-text h4,.folder h3,.ds-sec > h2,.ab-dlg-body h3,.a
 @media (max-width:820px){.sp .hc-overview,[data-view="durex"] .hc-overview{grid-template-columns:repeat(2,minmax(0,1fr))}.sp-three{grid-template-columns:1fr}.sp-tall{justify-self:center!important}}
 @media (prefers-reduced-motion:reduce){.msw-stamp,.msw-over{transition:none}}
 /* msw:end */
+
+/* ==========================================================================
+   lt:start · Homepage hero as a letter
+   A cream envelope with the headline on its face. While scrolling, the flap
+   lifts, the letter slides out and settles, then the page scrolls on into
+   Selected work. Without motion (or without JS) the envelope and the letter
+   simply sit one above the other.
+   ========================================================================== */
+.lt{position:relative;--lt-cream:#F8F1E4;--lt-cream-2:#F2E9D8;--lt-cream-3:#EADFCC;--lt-seam:#CDBCA0}
+.lt-stage{position:relative;display:grid;justify-items:center;gap:clamp(40px,6vw,72px);padding:clamp(40px,6vw,72px) var(--gutter-r) clamp(56px,7vw,96px) var(--gutter-l)}
+.lt-env{position:relative;width:min(860px,100%);aspect-ratio:2700/1710;container-type:inline-size;perspective:1600px}
+.lt-back,.lt-front,.lt-flap{position:absolute;inset:0}
+.lt-back{z-index:1;background:var(--lt-cream-3);border-radius:4px;box-shadow:0 1px 0 rgba(80,47,76,.06),0 34px 56px -30px rgba(80,47,76,.5)}
+.lt-liner{position:absolute;inset:7px 7px 40%;border-radius:2px;background:repeating-linear-gradient(135deg,var(--lavender-blush) 0 10px,#EADCEB 10px 20px);box-shadow:inset 0 6px 10px -6px rgba(80,47,76,.35)}
+.lt-front{z-index:3;border-radius:4px;overflow:hidden}
+.lt-face{position:absolute;inset:0;background:url(img/lt-envelope.jpg) 0 0/100% 100% no-repeat;clip-path:polygon(0 0,50% 52.5%,100% 0,100% 100%,0 100%)}
+.lt-h1{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.lt-flap{z-index:4;bottom:auto;height:52.5%;perspective:1600px;pointer-events:none}
+.lt-flap-card{position:absolute;inset:0;transform-origin:50% 0;transform-style:preserve-3d;will-change:transform}
+.lt-flap-in,.lt-flap-out{position:absolute;inset:0;clip-path:polygon(0 0,100% 0,52.5% 96%,50% 100%,47.5% 96%);backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.lt-flap-out{clip-path:polygon(-.5% 0,100.5% 0,50% 101.5%)}
+.lt-flap-out{background:url(img/lt-envelope.jpg) 0 0/100% calc(100% / .525) no-repeat}
+.lt-flap-in{transform:rotateY(180deg);background:repeating-linear-gradient(135deg,var(--lavender-blush) 0 10px,#EADCEB 10px 20px)}
+/* the letter: a folded cream sheet with a polaroid. Sizes follow the sheet's width (cqi) so it scales as one piece. */
+.lt{--lt-m:clamp(24px,4vw + 12px,84px)}
+.lt-stage{grid-template-columns:minmax(0,1fr)}
+.lt-letter{position:relative;z-index:5;width:min(480px,calc(100% - 2 * var(--lt-m)));margin:var(--lt-m);container-type:inline-size;display:flex;flex-direction:column;aspect-ratio:1/1.39;padding:0;color:var(--japanese-violet);text-align:center}
+.lt-paper{position:absolute;inset:0;z-index:-1;border-radius:2px;background:
+  linear-gradient(180deg,transparent 31.6%,rgba(255,255,255,.55) 32%,rgba(120,96,80,.13) 32.4%,transparent 33.6%),
+  linear-gradient(180deg,transparent 64.6%,rgba(255,255,255,.55) 65%,rgba(120,96,80,.12) 65.4%,transparent 66.6%),
+  linear-gradient(90deg,transparent 49.6%,rgba(120,96,80,.07) 50%,rgba(255,255,255,.4) 50.3%,transparent 51%),
+  radial-gradient(120% 90% at 30% 20%,#F7F1E7 0%,#F1E9DC 60%,#E9DFD0 100%);
+  box-shadow:0 1px 0 rgba(60,40,50,.08),0 18px 30px -16px rgba(40,22,36,.55)}
+.lt-paper::after{content:"";position:absolute;inset:0;opacity:.35;mix-blend-mode:multiply;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .55 0 0 0 0 .47 0 0 0 0 .4 0 0 0 .35 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.lt-photo{position:absolute;z-index:3;top:-4cqi;right:calc(-1 * min(10cqi,var(--lt-m) - 8px));width:37cqi;margin:0;padding:2.2cqi 2.2cqi 8cqi;background:#FFFDF9;box-shadow:0 1px 0 rgba(60,40,50,.08),0 12px 22px -10px rgba(30,16,26,.5);transform:rotate(4deg)}
+.lt-photo img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;background:var(--lavender-blush)}
+.lt-head{display:flex;flex-direction:column;justify-content:center;height:50cqi;padding:6cqi 36cqi 0 6cqi}
+.lt-hi{font-family:var(--f-serif);font-weight:400;font-size:var(--t-h2);line-height:var(--lh-h2);letter-spacing:var(--ls-h2);color:var(--japanese-violet)}
+.lt-hi em{font-style:italic}
+.lt-body{max-width:76cqi;margin:2cqi auto 0;font-family:var(--f-sans);font-size:var(--t-body-l);line-height:var(--lh-body-l);color:var(--japanese-violet)}
+.lt-sign{margin:auto 0 0;padding:30cqi 8cqi 11cqi;font-family:var(--f-serif);font-style:italic;font-size:clamp(.875rem,3.6cqi,1.1rem);line-height:1.2;letter-spacing:.01em;color:var(--japanese-violet)}
+.lt-cue{display:none}
+/* live: the stage is pinned under the nav and JS moves each layer from the scroll position */
+.lt.is-live{height:340svh}
+.lt.is-live .lt-stage{position:sticky;top:var(--lt-top,0px);display:block;height:calc(100svh - var(--lt-top,0px));min-height:520px;padding:0;overflow:hidden}
+.lt.is-live .lt-env{position:absolute;left:0;top:0;width:var(--ew,860px);height:var(--eh,555px);aspect-ratio:auto;will-change:transform}
+.lt.is-live .lt-letter{position:absolute;left:0;top:0;margin:0;width:min(480px,calc(100vw - 2 * var(--lt-m)));transform-origin:0 0;will-change:transform}
+.lt.is-live .lt-cue{position:absolute;left:0;right:0;bottom:clamp(16px,3vh,32px);z-index:6;display:flex;justify-content:center;align-items:center;gap:14px;margin:0;font-family:var(--f-mono);font-size:var(--t-label);line-height:var(--lh-label);letter-spacing:.06em;text-transform:uppercase;color:var(--old-lavender)}
+.lt-cue-line{position:relative;display:block;width:40px;height:1px;overflow:hidden;background:var(--line)}
+.lt-cue-line i{position:absolute;inset:0;background:var(--japanese-violet);transform:translateX(-100%);animation:lt-cue 2.4s ease-in-out infinite}
+@keyframes lt-cue{0%,20%{transform:translateX(-100%)}70%,100%{transform:translateX(100%)}}
+@media (prefers-reduced-motion:reduce){.lt-cue-line i{animation:none}}
+/* lt:end */
+/* ==========================================================================
+   pc:start · Selected work as postcards
+   Each case study is a pair: the cover as the picture side, and a written
+   side that overlaps one corner, in paper, border and ink colours taken from
+   that cover. The whole pair is one link to the case study.
+   ========================================================================== */
+.pc-list{display:grid;gap:clamp(72px,9vw,140px);padding-block:clamp(12px,2vw,28px) clamp(80px,10vw,140px)}
+.pc{position:relative;display:flex;flex-direction:column;text-decoration:none;color:var(--ink);border-radius:var(--r-sm);--pc-r1:-1.5deg;--pc-r2:1.8deg}
+.pc:nth-child(even){--pc-r1:1.5deg;--pc-r2:-1.8deg}
+.pc:focus-visible{outline:3px solid var(--japanese-violet);outline-offset:12px}
+.pc-pic{display:block;width:66%;padding:clamp(8px,1vw,12px);background:var(--white);border-radius:6px;box-shadow:0 1px 0 rgba(80,47,76,.06),0 26px 44px -26px rgba(80,47,76,.5);transform:rotate(var(--pc-r1));transition:transform .45s cubic-bezier(.2,.7,.2,1),box-shadow .45s}
+.pc-pic img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border-radius:3px;background:var(--lavender-blush)}
+.pc-note{position:relative;z-index:1;width:50%;align-self:flex-end;margin-top:-11%;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(16px,2vw,28px);padding:clamp(22px,2.4vw,34px);background:var(--pc-paper);border:1.5px solid var(--pc-line);border-radius:6px;box-shadow:0 1px 0 rgba(80,47,76,.06),0 24px 40px -24px rgba(80,47,76,.45);transform:rotate(var(--pc-r2));transition:transform .45s cubic-bezier(.2,.7,.2,1)}
+.pc:nth-child(even) .pc-pic{align-self:flex-end}
+.pc:nth-child(even) .pc-note{align-self:flex-start}
+.pc-note::before{content:"";position:absolute;inset:6px;border:1px solid color-mix(in srgb,var(--pc-line) 30%,transparent);border-radius:3px;pointer-events:none}
+.pc-msg{display:grid;gap:var(--sp-2);align-content:start;min-width:0}
+.pc-t{font-family:var(--f-serif);font-weight:400;font-size:var(--t-h3);line-height:var(--lh-h3);letter-spacing:var(--ls-h3);color:var(--pc-ink)}
+.pc-desc{display:block;font-size:var(--t-small);line-height:var(--lh-small);color:var(--ink)}
+.pc-more{display:inline-flex;gap:6px;align-items:center;margin-top:var(--sp-2);color:var(--pc-ink)}
+.pc-more span{transition:transform .2s}
+.pc-addr{position:relative;display:grid;align-content:start;gap:12px;min-width:0;padding-left:clamp(16px,2vw,26px);border-left:1px solid color-mix(in srgb,var(--pc-line) 40%,transparent)}
+.pc-stamp{position:relative;justify-self:end;width:clamp(68px,6.4vw,88px);aspect-ratio:256/292;margin:-6px -6px clamp(0px,.6vw,10px) 0;filter:drop-shadow(0 2px 3px rgba(80,47,76,.18));transform:rotate(3deg)}
+.pc-stamp img{display:block;width:100%;height:100%;object-fit:contain}
+.pc-lab{display:block;padding-bottom:6px;border-bottom:1px solid color-mix(in srgb,var(--pc-line) 40%,transparent);color:var(--pc-ink)}
+.pc:hover .pc-pic,.pc:focus-visible .pc-pic{transform:rotate(var(--pc-r1)) translateY(-6px);box-shadow:0 1px 0 rgba(80,47,76,.06),0 34px 52px -26px rgba(80,47,76,.55)}
+.pc:hover .pc-note,.pc:focus-visible .pc-note{transform:rotate(var(--pc-r2)) translateY(-3px)}
+.pc:hover .pc-t,.pc:focus-visible .pc-t{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:5px}
+.pc:hover .pc-more span,.pc:focus-visible .pc-more span{transform:translateX(4px)}
+@media (max-width:1023px){.pc-pic{width:78%}.pc-note{width:64%;margin-top:-10%}}
+@media (max-width:699px){
+  .pc,.pc:nth-child(even){--pc-r1:-1deg;--pc-r2:0deg}
+  .pc-pic,.pc:nth-child(even) .pc-pic{width:100%;align-self:stretch}
+  .pc-note,.pc:nth-child(even) .pc-note{width:94%;align-self:center;margin-top:-11%;grid-template-columns:1fr;gap:var(--sp-4)}
+  .pc-t{padding-right:64px}
+  .pc-addr{position:static;padding-left:0;border-left:0;gap:8px}
+  .pc-stamp{position:absolute;top:-16px;right:10px;margin:0;width:62px}
+}
+@media (prefers-reduced-motion:reduce){.pc-pic,.pc-note,.pc-more span{transition:none}}
+/* pc:end */
+/* ==========================================================================
+   spf:start · Footer sign-off: a pen writes "Thanks for scrolling." above the footer line
+   ========================================================================== */
+.spf{--spf-pen-hi:#ffffff;--spf-pen-mid:#f4f0f2;--spf-pen-lo:#cfc6cc;--spf-pen-edge:#b2a7ae;position:relative;overflow:clip;container-type:inline-size;display:flex;flex-direction:column}
+.spf-main{display:flex;justify-content:center;padding:clamp(40px,6cqw,80px) 20px clamp(8px,1.5cqw,16px)}
+.spf-stage{position:relative;width:min(100%,calc(clamp(110px,14cqw,170px) * var(--spf-ar,2.4)));aspect-ratio:var(--spf-ar,2.4);touch-action:pan-y}
+.spf-stage[data-live]{cursor:none}
+.spf-svg{position:absolute;inset:0;display:block;width:100%;height:100%;overflow:visible}
+.spf-guide{transition:opacity .9s ease}
+.spf[data-signed] .spf-guide{opacity:0}
+.spf-inkg{transition:opacity .45s ease}
+.spf-scrib{transition:opacity 1.4s ease}
+.spf-scrib[data-dry]{opacity:0}
+.spf-again{position:absolute;right:0;bottom:-6px;display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 11px;border:0;border-radius:99px;font:500 var(--t-caption)/1 var(--f-sans);color:var(--muted);background:var(--white);box-shadow:0 0 0 1px var(--line),0 6px 18px -10px rgba(80,47,76,.35);opacity:0;transform:translateY(4px);transition:opacity .35s ease,transform .35s ease,color .2s ease;pointer-events:none;cursor:pointer}
+.spf[data-signed] .spf-stage:hover .spf-again,.spf[data-signed] .spf-again:focus-visible{opacity:1;transform:none;pointer-events:auto}
+.spf-again:hover{color:var(--japanese-violet)}
+.spf-again:focus-visible{outline:2px solid var(--japanese-violet);outline-offset:3px}
+.spf-again svg{width:13px;height:13px;transition:transform .5s cubic-bezier(.3,1.4,.5,1)}
+.spf-again:hover svg{transform:rotate(-200deg)}
+@media (hover:none){.spf[data-signed] .spf-again{opacity:.85;transform:none;pointer-events:auto}}
+.spf-stamp{display:inline-flex;align-items:center;gap:7px;font-family:var(--f-mono);font-size:var(--t-caption);color:var(--muted);opacity:0;transform:translateY(3px);transition:opacity .8s ease .2s,transform .8s ease .2s}
+.spf-stamp i{width:6px;height:6px;border-radius:99px;background:var(--japanese-violet);box-shadow:0 0 0 3px color-mix(in srgb,var(--japanese-violet) 18%,transparent)}
+.spf[data-signed] .spf-stamp{opacity:1;transform:none}
+@container (max-width:640px){.spf-line{stroke-width:16px}}
+@media (prefers-reduced-motion:reduce){.spf-guide,.spf-again,.spf-scrib,.spf-stamp,.spf-inkg{transition:none}}
+/* spf:end */
 /* ===== Before/after bento tiles: screens with dot + leader-line callouts ===== */
 .bento-head{display:grid;gap:var(--sp-2);max-width:64ch;margin-top:var(--sp-5)}
 .bento-head h4,.bento-head p{margin:0}
@@ -1763,21 +1882,30 @@ h4,.or-change-text h4,.kc-opt-text h4,.folder h3,.ds-sec > h2,.ab-dlg-body h3,.a
 
 <!-- ======================= HOME (structure from Violet's Notion brief) ======================= -->
 <main data-view="home">
-  <section class="intro band" id="intro" aria-label="Introduction">
-    <div class="wrap">
-      <div class="intro-text">
-        <h1>I design ways for people to find <span class="nw"><em>their bearings</em>—and</span> <em>each other</em>.</h1>
-        <p class="intro-sub">I'm a UX designer pursuing my MFA at SCAD, with a background in design marketing from Kingston University in London. That background shapes how I approach design: understanding what matters to people, then figuring out how an experience can support them.</p>
+  <!-- lt:start · Homepage hero as a letter: a sealed envelope that opens as you scroll, then the letter itself -->
+  <section class="lt band" id="intro" aria-label="Introduction">
+    <div class="lt-stage">
+      <div class="lt-env">
+        <div class="lt-back" aria-hidden="true"><span class="lt-liner"></span></div>
+        <div class="lt-flap" aria-hidden="true"><span class="lt-flap-card"><span class="lt-flap-in"></span><span class="lt-flap-out"></span></span></div>
+        <div class="lt-front">
+          <span class="lt-face" aria-hidden="true"></span>
+          <h1 class="lt-h1"><span class="lt-h1-in">I design ways for people to find <span class="nw"><em>their bearings</em>—and</span> <em>each other</em>.</span></h1>
+        </div>
       </div>
-      <div class="intro-art">
-        <button type="button" class="envelope" id="hp-env" aria-haspopup="dialog" aria-label="Open the envelope: a note from Violet"><span class="env-flap" aria-hidden="true"></span><span class="env-note" aria-hidden="true"></span><i class="seal" aria-hidden="true">VL</i></button>
-        <figure class="photo-card"><img src="img/portrait.jpg" alt="Portrait of Violet in a black dress on a museum staircase, beside framed mosaic panels" width="720" height="900"><figcaption>hello from Violet</figcaption></figure>
-        <div class="postage" aria-hidden="true"><b>VL</b><svg class="postage-mark"><use href="#o-compass"/></svg><span>26</span></div>
-      </div>
+      <article class="lt-letter" aria-labelledby="lt-hi">
+        <span class="lt-paper" aria-hidden="true"></span>
+        <figure class="lt-photo"><img src="img/portrait.jpg" alt="Portrait of Violet in a black dress on a museum staircase, beside framed mosaic panels" width="720" height="900"></figure>
+        <div class="lt-head"><h2 class="lt-hi" id="lt-hi">Hi, I’m <em>Violet</em>.</h2></div>
+        <p class="lt-body">I'm a UX designer pursuing my MFA at SCAD, with a background in design marketing from Kingston University in London. That background shapes how I approach design: understanding what matters to people, then figuring out how an experience can support them.</p>
+        <p class="lt-sign">violetli.design</p>
+      </article>
+      <p class="lt-cue" aria-hidden="true"><span>Scroll to open</span><span class="lt-cue-line"><i></i></span></p>
     </div>
   </section>
+  <!-- lt:end -->
 
-  <!-- sw:start · Selected work: scroll-fill heading and a sideways row of case studies (layout from Violet's reference) -->
+  <!-- sw:start · Selected work: scroll-fill heading, then the four case studies as postcards -->
   <section class="work band selw" id="work" aria-labelledby="work-h">
     <div class="wrap sw-head">
       <svg class="sw-float sw-float--a" aria-hidden="true"><use href="#o-compass"/></svg>
@@ -1785,37 +1913,70 @@ h4,.or-change-text h4,.kc-opt-text h4,.folder h3,.ds-sec > h2,.ab-dlg-body h3,.a
       <h2 id="work-h" class="sw-title"><span class="sw-w">Selected</span> <em class="sw-w">work</em></h2>
       <p class="sw-sub">Four case studies across UX research, app design and web design:</p>
     </div>
-    <div class="sw-row" tabindex="0" role="region" aria-label="Selected work, scrolls sideways">
-      <a class="sw-card" href="#bakers-pride">
-        <span class="sw-img"><img src="img/bp-hero.jpg" alt="Baker’s Pride cover: the Baker’s Pride wordmark and the line A fresh home for Savannah’s family bakery, above the redesigned homepage" width="2400" height="1350" loading="lazy"></span>
-        <span class="label sw-lab">Information Architecture &amp; Web Design · Academic team project</span>
-        <h3 class="sw-t">Baker’s Pride</h3>
-        <p class="sw-desc">Helping customers explore a family bakery’s offerings and send clearer custom-cake requests.</p>
-        <span class="label sw-more">View case study <span aria-hidden="true">→</span></span>
+    <!-- pc:start · Each case study as a two-sided postcard: the cover, and a written side in the cover's own colours -->
+    <div class="wrap pc-list">
+      <a class="pc" href="#bakers-pride" style="--pc-paper:#FAF1E2;--pc-line:#730C10;--pc-ink:#730C10">
+        <span class="pc-pic"><img src="img/bp-hero.jpg" alt="Baker’s Pride cover: the Baker’s Pride wordmark and the line A fresh home for Savannah’s family bakery, above the redesigned homepage" width="2400" height="1350" loading="lazy"></span>
+        <div class="pc-note">
+          <div class="pc-msg">
+            <h3 class="pc-t">Baker’s Pride</h3>
+            <span class="pc-desc">Helping customers explore a family bakery’s offerings and send clearer custom-cake requests.</span>
+            <span class="label pc-more">View case study <span aria-hidden="true">→</span></span>
+          </div>
+          <span class="pc-addr">
+            <span class="pc-stamp" aria-hidden="true"><img src="img/pc-stamp-bakers-pride.png" alt="" width="256" height="292" loading="lazy"></span>
+            <span class="label pc-lab">Information Architecture &amp; Web Design</span>
+            <span class="label pc-lab">Academic team project</span>
+          </span>
+        </div>
       </a>
-      <a class="sw-card" href="#huddle">
-        <span class="sw-img"><img src="img/cover-huddle.png" alt="Huddle cover: the Huddle logo and tagline Built for the hesitant hello beside a phone home screen with the Huddle app icon" width="5760" height="3240" loading="lazy"></span>
-        <span class="label sw-lab">UX Research &amp; Design · Academic team project</span>
-        <h3 class="sw-t">Huddle</h3>
-        <p class="sw-desc">Helping college students take the first step toward social connection.</p>
-        <span class="label sw-more">View case study <span aria-hidden="true">→</span></span>
+      <a class="pc" href="#huddle" style="--pc-paper:#FFF5EC;--pc-line:#FF7A2E;--pc-ink:#B84A10">
+        <span class="pc-pic"><img src="img/cover-huddle.png" alt="Huddle cover: the Huddle logo and tagline Built for the hesitant hello beside a phone home screen with the Huddle app icon" width="5760" height="3240" loading="lazy"></span>
+        <div class="pc-note">
+          <div class="pc-msg">
+            <h3 class="pc-t">Huddle</h3>
+            <span class="pc-desc">Helping college students take the first step toward social connection.</span>
+            <span class="label pc-more">View case study <span aria-hidden="true">→</span></span>
+          </div>
+          <span class="pc-addr">
+            <span class="pc-stamp" aria-hidden="true"><img src="img/pc-stamp-huddle.png" alt="" width="256" height="292" loading="lazy"></span>
+            <span class="label pc-lab">UX Research &amp; Design</span>
+            <span class="label pc-lab">Academic team project</span>
+          </span>
+        </div>
       </a>
-      <a class="sw-card" href="#ornata">
-        <span class="sw-img"><img src="img/cover-ornata.png" alt="Ornata cover: the Ornata wordmark above three phones showing the home screen, the welcome screen and the Buyi pattern collection" width="2526" height="1785" loading="lazy"></span>
-        <span class="label sw-lab">App Design &amp; Marketing Strategy · Academic project</span>
-        <h3 class="sw-t">Ornata</h3>
-        <p class="sw-desc">Enriching museum visits through an app concept that lets visitors scan, learn about, and collect traditional patterns found on artifacts.</p>
-        <span class="label sw-more">View case study <span aria-hidden="true">→</span></span>
+      <a class="pc" href="#ornata" style="--pc-paper:#FAEEDD;--pc-line:#5C3A26;--pc-ink:#5C3A26">
+        <span class="pc-pic"><img src="img/cover-ornata.png" alt="Ornata cover: the Ornata wordmark above three phones showing the home screen, the welcome screen and the Buyi pattern collection" width="2526" height="1785" loading="lazy"></span>
+        <div class="pc-note">
+          <div class="pc-msg">
+            <h3 class="pc-t">Ornata</h3>
+            <span class="pc-desc">Enriching museum visits through an app concept that lets visitors scan, learn about, and collect traditional patterns found on artifacts.</span>
+            <span class="label pc-more">View case study <span aria-hidden="true">→</span></span>
+          </div>
+          <span class="pc-addr">
+            <span class="pc-stamp" aria-hidden="true"><img src="img/pc-stamp-ornata.png" alt="" width="256" height="292" loading="lazy"></span>
+            <span class="label pc-lab">App Design &amp; Marketing Strategy</span>
+            <span class="label pc-lab">Academic project</span>
+          </span>
+        </div>
       </a>
-      <a class="sw-card" href="#kingston-campass">
-        <span class="sw-img"><img src="img/cover-kingston.png" alt="Kingston Campass cover: the compass logo and name beside phone screens for routes, a daily planner, AR directions and the home screen" width="5760" height="3660" loading="lazy"></span>
-        <span class="label sw-lab">UX/UI Design · Academic team project</span>
-        <h3 class="sw-t">Kingston Campass</h3>
-        <p class="sw-desc">Helping students navigate unfamiliar campuses with clearer routes and directions.</p>
-        <span class="label sw-more">View case study <span aria-hidden="true">→</span></span>
+      <a class="pc" href="#kingston-campass" style="--pc-paper:#F8F0FF;--pc-line:#5E3F8C;--pc-ink:#5E3F8C">
+        <span class="pc-pic"><img src="img/cover-kingston.png" alt="Kingston Campass cover: the compass logo and name beside phone screens for routes, a daily planner, AR directions and the home screen" width="5760" height="3660" loading="lazy"></span>
+        <div class="pc-note">
+          <div class="pc-msg">
+            <h3 class="pc-t">Kingston Campass</h3>
+            <span class="pc-desc">Helping students navigate unfamiliar campuses with clearer routes and directions.</span>
+            <span class="label pc-more">View case study <span aria-hidden="true">→</span></span>
+          </div>
+          <span class="pc-addr">
+            <span class="pc-stamp" aria-hidden="true"><img src="img/pc-stamp-kingston.png" alt="" width="256" height="292" loading="lazy"></span>
+            <span class="label pc-lab">UX/UI Design</span>
+            <span class="label pc-lab">Academic team project</span>
+          </span>
+        </div>
       </a>
     </div>
-    <div class="wrap sw-foot"><div class="sw-bar" aria-hidden="true"><span class="sw-thumb"></span></div></div>
+    <!-- pc:end -->
   </section>
   <!-- sw:end -->
 
@@ -2992,18 +3153,17 @@ h4,.or-change-text h4,.kc-opt-text h4,.folder h3,.ds-sec > h2,.ab-dlg-body h3,.a
   </div></div>
 </main>
 
-<footer class="foot band"><div class="wrap"><span>Violet Li © 2026</span></div></footer>
+<footer class="foot band spf">
+  <div class="spf-main">
+    <div class="spf-stage">
+      <svg class="spf-svg" role="img" aria-label="Signature: Thanks for scrolling."></svg>
+      <button type="button" class="spf-again" aria-label="Sign again"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 8a5.5 5.5 0 1 0 1.7-4"/><path d="M2.2 1.8v2.6h2.6"/></svg>Sign again</button>
+    </div>
+  </div>
+  <div class="wrap"><span>Violet Li © 2026</span><span class="spf-stamp" role="status"></span></div>
+</footer>
 </div><!-- /page -->
 
-<dialog id="hp-letter" class="hp-letter" aria-labelledby="hp-letter-h">
-  <div class="hp-letter-paper">
-    <button type="button" class="btn btn--sm hp-letter-close">Close <span aria-hidden="true">×</span></button>
-    <p class="hp-letter-hi" id="hp-letter-h">Oh, you opened it!</p>
-    <p>I spend a lot of time thinking about what makes someone want to look closer, try something, or say hello. This little envelope was one of those thoughts.</p>
-    <p>Thanks for taking a closer look at my work. If something here gives us a reason to talk, I’d love to hear from you.</p>
-    <p class="hp-letter-sign">Violet</p>
-  </div>
-</dialog>
 
 
 <dialog id="lightbox" aria-label="Enlarged image"><button type="button" class="btn btn--solid btn--sm" id="lb-close">Close</button><img id="lb-img" alt=""></dialog>
@@ -3391,39 +3551,9 @@ var SITE = {
   if (open && cover) open.addEventListener('click', function(){ cover.click(); });
 })();
 /* ww:end */
-/* hp:start · Homepage interaction: hero movement, the envelope letter, stacking folders, contact-link previews */
+/* hp:start · Homepage interaction: stacking folders, contact-link previews */
 (function(){
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)'), wide = window.matchMedia('(min-width: 821px)');
-  // hero: as the introduction scrolls up, the envelope lifts ~20px and the portrait straightens (the stamp stays on it)
-  var intro = document.getElementById('intro'), art = intro && intro.querySelector('.intro-art');
-  var photo = art && art.querySelector('.photo-card'), stamp = art && art.querySelector('.postage'), env = document.getElementById('hp-env');
-  var T0 = 3.5, ticking = false;
-  function hero(){
-    ticking = false; if (!art || !art.offsetWidth) return;
-    var p = 0;
-    if (wide.matches && !reduce.matches) { var r = intro.getBoundingClientRect(); p = Math.min(1, Math.max(0, -r.top / (r.height * .8))); }
-    var tilt = T0 * (1 - p), d = tilt - T0;
-    env.style.setProperty('--ey', (-20 * p).toFixed(2) + 'px');
-    photo.style.setProperty('--ptilt', tilt.toFixed(3) + 'deg');
-    // keep the stamp on the portrait: turn it about the portrait's centre by the same amount
-    var cx = photo.offsetLeft + photo.offsetWidth / 2, cy = photo.offsetTop + photo.offsetHeight / 2;
-    var sx = stamp.offsetLeft + stamp.offsetWidth / 2 - cx, sy = stamp.offsetTop + stamp.offsetHeight / 2 - cy;
-    var a = d * Math.PI / 180, nx = sx * Math.cos(a) - sy * Math.sin(a), ny = sx * Math.sin(a) + sy * Math.cos(a);
-    stamp.style.setProperty('--sx', (nx - sx).toFixed(2) + 'px'); stamp.style.setProperty('--sy', (ny - sy).toFixed(2) + 'px'); stamp.style.setProperty('--sd', d.toFixed(3) + 'deg');
-  }
-  function onScroll(){ if (!ticking) { ticking = true; requestAnimationFrame(hero); } }
-  window.addEventListener('scroll', onScroll, {passive:true}); window.addEventListener('resize', onScroll); hero();
-
-  // the envelope opens: flap up, note slides out, then the letter
-  var letter = document.getElementById('hp-letter');
-  env.addEventListener('click', function(){
-    if (!letter.showModal) return;
-    env.classList.add('is-open');
-    setTimeout(function(){ letter.showModal(); }, reduce.matches ? 0 : 320);
-  });
-  letter.querySelector('.hp-letter-close').addEventListener('click', function(){ letter.close(); });
-  letter.addEventListener('click', function(e){ if (e.target === letter) letter.close(); });
-  letter.addEventListener('close', function(){ env.classList.remove('is-open'); env.focus({preventScroll:true}); });
 
   // selected work: folders stack as you scroll, when a whole folder fits on screen
   var list = document.querySelector('.work-list'), cards = list ? [].slice.call(list.querySelectorAll('.pcard')) : [], nav = document.querySelector('.nav');
@@ -3537,7 +3667,7 @@ var SITE = {
     window.addEventListener('resize', function(){ track.scrollLeft = cur * track.clientWidth; });
   });
 })();
-/* sw:start · Selected work: scroll-fill heading, drifting ornaments, sideways row + progress bar */
+/* sw:start · Selected work: scroll-fill heading, drifting ornaments */
 (function(){
   var sec = document.getElementById('work'); if (!sec || !sec.classList.contains('selw')) return;
   var head = sec.querySelector('.sw-head'), words = [].slice.call(sec.querySelectorAll('.sw-w'));
@@ -3562,29 +3692,323 @@ var SITE = {
   window.addEventListener('scroll', fill, {passive:true}); window.addEventListener('resize', fill);
   window.addEventListener('hashchange', function(){ setTimeout(fill, 0); }); fill();
 
-  // progress bar: shows how much of the row is in view and where; click or drag it to scroll
-  var row = sec.querySelector('.sw-row'), bar = sec.querySelector('.sw-bar'), thumb = sec.querySelector('.sw-thumb');
-  function sync(){
-    var max = row.scrollWidth - row.clientWidth;
-    sec.classList.toggle('no-scroll', max < 2);
-    var w = bar.clientWidth * row.clientWidth / row.scrollWidth;
-    thumb.style.width = w + 'px';
-    thumb.style.setProperty('--tx', (max > 0 ? (bar.clientWidth - w) * row.scrollLeft / max : 0) + 'px');
-  }
-  row.addEventListener('scroll', sync, {passive:true}); window.addEventListener('resize', sync);
-  window.addEventListener('hashchange', function(){ setTimeout(sync, 0); }); window.addEventListener('load', sync); sync();
-  function seek(e){
-    var b = bar.getBoundingClientRect(), w = thumb.offsetWidth;
-    var f = clamp((e.clientX - b.left - w / 2) / Math.max(1, b.width - w));
-    row.scrollTo({left: f * (row.scrollWidth - row.clientWidth), behavior: e.type === 'pointerdown' && !reduce.matches ? 'smooth' : 'instant'});
-  }
-  var dragging = false;
-  bar.addEventListener('pointerdown', function(e){ dragging = true; bar.setPointerCapture(e.pointerId); row.style.scrollSnapType = 'none'; seek(e); });
-  bar.addEventListener('pointermove', function(e){ if (dragging) seek(e); });
-  function end(){ dragging = false; row.style.scrollSnapType = ''; }
-  bar.addEventListener('pointerup', end); bar.addEventListener('pointercancel', end);
 })();
 /* sw:end */
+/* lt:start · Homepage letter: the scroll position opens the envelope, lifts the letter out and settles it */
+(function(){
+  var sec = document.getElementById('intro'); if (!sec || !sec.classList.contains('lt')) return;
+  var stage = sec.querySelector('.lt-stage'), env = sec.querySelector('.lt-env'), flap = sec.querySelector('.lt-flap');
+  var card = sec.querySelector('.lt-flap-card'), letter = sec.querySelector('.lt-letter'), cue = sec.querySelector('.lt-cue');
+  var nav = document.querySelector('.nav'), reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var photo = letter.querySelector('.lt-photo');
+  var W = 0, H = 0, ew = 0, eh = 0, lw = 0, lh = 0, ov = 0, start = 0, travel = 1, frame = 0;
+  function clamp(v){ return v < 0 ? 0 : v > 1 ? 1 : v; }
+  function ease(a, b, p){ var t = clamp((p - a) / (b - a)); return t * t * (3 - 2 * t); }
+  function mix(a, b, t){ return a + (b - a) * t; }
+  function reset(){
+    [env, card, letter].forEach(function(el){ el.style.transform = ''; });
+    env.style.opacity = ''; letter.style.clipPath = ''; flap.style.zIndex = ''; cue.style.opacity = '';
+  }
+  function measure(){
+    var live = !reduce.matches;
+    sec.classList.toggle('is-live', live);
+    if (!live) { reset(); W = 0; return; }
+    if (!sec.offsetParent) return;
+    var top = nav ? nav.getBoundingClientRect().height : 0;
+    sec.style.setProperty('--lt-top', top + 'px');
+    W = stage.clientWidth; H = stage.clientHeight;
+    var small = W < 640, ar = 2700 / 1710;
+    ew = Math.min(860, W - (small ? 32 : 96)); eh = ew / ar;
+    var maxH = H * (small ? .6 : .6); if (eh > maxH) { eh = maxH; ew = eh * ar; }
+    env.style.setProperty('--ew', ew + 'px'); env.style.setProperty('--eh', eh + 'px');
+    lw = letter.offsetWidth; lh = letter.offsetHeight;
+    ov = photo ? Math.max(0, photo.offsetLeft + photo.offsetWidth - lw) : 0; // the polaroid hangs past the sheet's edge
+    start = sec.getBoundingClientRect().top + window.scrollY - top;
+    travel = Math.max(1, sec.offsetHeight - stage.offsetHeight);
+    render();
+  }
+  function render(){
+    frame = 0; if (!W || !sec.classList.contains('is-live')) return;
+    var p = clamp((window.scrollY - start) / travel);
+    var open = ease(.03, .24, p), ext = ease(.22, .5, p), settle = ease(.48, .8, p);
+    // the envelope: centred, drops a little while the letter comes out, then slides away
+    var ex = (W - ew) / 2, ey0 = (H - eh) / 2 + H * .03;
+    var eyExt = ey0 + ext * eh * .32, ey = eyExt + settle * (H - ey0 + 40);
+    env.style.transform = 'translate(' + ex.toFixed(1) + 'px,' + ey.toFixed(1) + 'px)';
+    env.style.opacity = (1 - ease(.64, .8, p)).toFixed(3);
+    card.style.transform = 'rotateX(' + (-180 * open).toFixed(2) + 'deg)';
+    flap.style.zIndex = open < .5 ? 4 : 0;
+    // the letter: tucked inside, slides up out of the mouth, then grows to full size in the middle
+    var si = Math.min(ew * .86 / lw, eh * .9 / lh), sf = Math.min(1, (H - 40) / lh, (W - 16 - 2 * ov) / lw);
+    var s = mix(si, sf, settle);
+    var cyPre = eyExt + eh * .16 - ext * eh * .8 + lh * si / 2;
+    var cy = mix(cyPre, H / 2, settle);
+    var x = W / 2 - lw * s / 2, y = cy - lh * s / 2;
+    letter.style.transform = 'translate(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px) scale(' + s.toFixed(4) + ')';
+    // anything still below the envelope's mouth stays hidden inside it
+    var hide = Math.max(0, Math.min(lh + 80, (y + lh * s - (ey + 1)) / s));
+    letter.style.clipPath = hide > 0 ? 'inset(-80px -80px ' + hide.toFixed(1) + 'px -80px)' : '';
+    cue.style.opacity = (1 - ease(0, .1, p)).toFixed(3);
+    sec.dataset.p = p.toFixed(3);
+  }
+  function schedule(){ if (!frame) frame = requestAnimationFrame(render); }
+  window.addEventListener('scroll', schedule, {passive:true});
+  window.addEventListener('resize', measure);
+  window.addEventListener('load', measure);
+  window.addEventListener('hashchange', function(){ setTimeout(measure, 0); });
+  if (reduce.addEventListener) reduce.addEventListener('change', measure);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
+  if (window.ResizeObserver) new ResizeObserver(function(){ measure(); }).observe(letter);
+  measure();
+})();
+/* lt:end */
+/* spf:start · Footer sign-off: a pen writes "Thanks for scrolling." when the footer comes into view, then rests; after that you can write with it.
+   Ported to plain JS from the Signature Pen Footer component. Handwriting glyphs derived from EMS Allure
+   (Sheldon B. Michaels, SVG by Windell H. Oskay), after Allura by Rob Leuschke, TypeSETit, all SIL Open Font License 1.1. */
+(function(){
+  var root = document.querySelector('.spf'); if (!root) return;
+  var stage = root.querySelector('.spf-stage'), svg = root.querySelector('.spf-svg'), again = root.querySelector('.spf-again'), stampEl = root.querySelector('.spf-stamp');
+  var WORD = 'Thanks for scrolling.', DURATION = 3.6;
+  var GLYPHS = {".":[224, "145 63 129 38"],"T":[554, "57 378 9 425 -3 501 38 592 113 646 198 677 287 690 466 687 639 665 806 662 860 674 825 690 743 580 734 539 728 485 743 463|529 570 450 539 391 476 324 353 239 205 180 66 180 25 198 0 230 22 268 63"],"a":[526, "495 183 457 132 406 79 331 32 271 19 243 63 255 142 296 274 277 243 176 145 69 57 -19 19 -63 66 -57 154 35 261 148 331 230 356 312 356 324 343"],"c":[346, "243 306 239 350 198 365 101 328 -16 208 -47 170 -72 110 -66 66 -47 25 57 16 186 57 268 123 315 183"],"f":[334, "-110 -365 -60 -321 9 -94 104 154 198 369 277 517 328 617 419 696 466 718 523 696 507 598 406 444 290 321 220 261 173 220 117 192 25 183 28 208 208 205 306 217"],"g":[469, "306 350 195 353 69 287 -16 205 -57 164 -79 110 -60 57 -19 19 91 69 176 158 265 252 287 274 318 274 164 -85 35 -331 -22 -381 -72 -410 -117 -416 -167 -381 -148 -280 -79 -220 22 -132 85 -88 258 22 369 110 438 183"],"h":[561, "-31 183 113 315 343 482 447 605 469 702 394 718 324 662 255 586 180 457 101 309 13 32 110 148 192 252 287 315 328 334 350 312 340 261 290 183 261 76 284 19 350 19 413 63 482 129 529 183"],"i":[249, "-31 183 38 236 60 328 -38 85 -19 22 54 6 132 69 183 129 217 183|123 476 95 438"],"k":[356, "-31 183 32 252 98 337|73 356 158 356 271 428 381 542 438 627 450 696 406 728 318 696 249 617 183 498 126 394 19 139 -19 13 25 54 113 173 214 284 290 343 340 346|139 249 186 44 258 -85 362 -148 428 -148 457 -120 460 -101 457 -66"],"l":[261, "-25 176 91 265 239 428 346 589 394 662 381 709 312 718 243 674 148 532 41 340 -28 198 -50 85 -22 25 44 19 120 54 195 132 230 183"],"n":[580, "148 328 41 25 183 186 271 280 334 318 381 337 394 312 331 195 290 101 293 47 328 16 387 25 450 69 513 132 548 183"],"o":[391, "195 337 142 365 66 315 -6 233 -41 161 -57 76 13 9 101 41 183 110 230 208 239 246 239 284 220 284|167 158 183 101 214 72 255 76 296 110 359 183"],"r":[369, "-31 183 35 287 154 463 47 391 47 365 60 356 258 353 145 214 82 101 98 22 186 28 296 132 337 183"],"s":[302, "-31 183 9 217 35 261 66 328 117 394 249 447 293 454 343 444 350 413 343 381 328 365|54 274 73 233 161 183 198 135 195 88 151 35 79 -6 32 -28 -25 -31 -35 -19 -35 16 -16 35"]};
+  var ASCENT = 800, SPACE = 378, JOIN = 16, NIB = 26, CONE = 300, RAD = 74, ANGLE = -31, NS = 'http://www.w3.org/2000/svg';
+  function r1(v){ return Math.round(v * 10) / 10; }
+  function smoothCubics(pts){
+    if (pts.length < 2) return [];
+    function cusp(i){
+      if (i <= 0 || i >= pts.length - 1) return true;
+      var ax = pts[i][0] - pts[i-1][0], ay = pts[i][1] - pts[i-1][1], bx = pts[i+1][0] - pts[i][0], by = pts[i+1][1] - pts[i][1];
+      var m = Math.hypot(ax, ay) * Math.hypot(bx, by);
+      return m === 0 || (ax * bx + ay * by) / m < -0.2;
+    }
+    var out = [], k = 1 / 6;
+    for (var i = 0; i < pts.length - 1; i++) {
+      var p1 = pts[i], p2 = pts[i+1], ci = cusp(i), cj = cusp(i+1);
+      var p0 = ci ? p1 : pts[i-1], p3 = cj ? p2 : pts[i+2];
+      var c1 = ci ? p1 : [p1[0] + (p2[0] - p0[0]) * k, p1[1] + (p2[1] - p0[1]) * k];
+      var c2 = cj ? p2 : [p2[0] - (p3[0] - p1[0]) * k, p2[1] - (p3[1] - p1[1]) * k];
+      out.push([p1, c1, c2, p2]);
+    }
+    return out;
+  }
+  function bez(c, t){ var u = 1 - t, a = u*u*u, b = 3*u*u*t, d = 3*u*t*t, e = t*t*t;
+    return [a*c[0][0] + b*c[1][0] + d*c[2][0] + e*c[3][0], a*c[0][1] + b*c[1][1] + d*c[2][1] + e*c[3][1]]; }
+  function buildStroke(pts){
+    var cubics = smoothCubics(pts), d = 'M' + r1(pts[0][0]) + ' ' + r1(pts[0][1]), s = [pts[0][0], pts[0][1]], acc = [0], len = 0;
+    cubics.forEach(function(c){
+      d += 'C' + [c[1], c[2], c[3]].map(function(p){ return r1(p[0]) + ' ' + r1(p[1]); }).join(' ');
+      var n = Math.max(2, Math.ceil(Math.hypot(c[3][0] - c[0][0], c[3][1] - c[0][1]) / 8));
+      for (var j = 1; j <= n; j++) { var p = bez(c, j / n); len += Math.hypot(p[0] - s[s.length-2], p[1] - s[s.length-1]); s.push(p[0], p[1]); acc.push(len); }
+    });
+    return {d:d, pts:s, acc:acc, len:len};
+  }
+  function parseGlyph(ch){
+    if (ch === ' ') return {adv:SPACE, strokes:[]};
+    var g = GLYPHS[ch]; if (!g) return null;
+    var strokes = g[1].split('|').map(function(part){
+      var n = part.trim().split(/\s+/).map(Number), out = [];
+      for (var i = 0; i + 1 < n.length; i += 2) out.push([n[i], ASCENT - n[i+1]]);
+      return out;
+    }).filter(function(p){ return p.length > 1; });
+    return {adv:g[0], strokes:strokes};
+  }
+  function plen(p){ var l = 0; for (var i = 1; i < p.length; i++) l += Math.hypot(p[i][0] - p[i-1][0], p[i][1] - p[i-1][1]); return l; }
+  // letters that touch become one stroke; i dots and t bars are held back and made last, the way people write
+  function layoutWord(text){
+    var runs = [], late = [], x = 0, prevEnd = null;
+    Array.from(text).forEach(function(ch){
+      var g = parseGlyph(ch) || parseGlyph(' ');
+      g.strokes.forEach(function(raw, si){
+        var p = raw.map(function(q){ return [q[0] + x, q[1]]; }), last = runs[runs.length-1];
+        var touches = prevEnd && Math.hypot(p[0][0] - prevEnd[0], p[0][1] - prevEnd[1]) < JOIN;
+        if (touches && last) { last.push.apply(last, p.slice(1)); prevEnd = p[p.length-1]; return; }
+        var cy = p.reduce(function(s, q){ return s + q[1]; }, 0) / p.length;
+        if (si > 0 && plen(p) < 260 && cy < ASCENT - 260) { late.push(p); return; }
+        runs.push(p); prevEnd = p[p.length-1];
+      });
+      if (!g.strokes.length) prevEnd = null;
+      x += g.adv;
+    });
+    var strokes = runs.concat(late).map(buildStroke), x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
+    strokes.forEach(function(k){ for (var i = 0; i < k.pts.length; i += 2) { x0 = Math.min(x0, k.pts[i]); y0 = Math.min(y0, k.pts[i+1]); x1 = Math.max(x1, k.pts[i]); y1 = Math.max(y1, k.pts[i+1]); } });
+    return {strokes:strokes, box:{x:x0, y:y0, w:x1 - x0, h:y1 - y0}};
+  }
+  function pointAt(s, l){
+    var acc = s.acc, pts = s.pts;
+    if (l <= 0) return [pts[0], pts[1]];
+    if (l >= s.len) return [pts[pts.length-2], pts[pts.length-1]];
+    var lo = 0, hi = acc.length - 1;
+    while (hi - lo > 1) { var mid = (lo + hi) >> 1; if (acc[mid] < l) lo = mid; else hi = mid; }
+    var t = (l - acc[lo]) / (acc[hi] - acc[lo] || 1);
+    return [pts[lo*2] + (pts[hi*2] - pts[lo*2]) * t, pts[lo*2+1] + (pts[hi*2+1] - pts[lo*2+1]) * t];
+  }
+  function ends(s){ return [[s.pts[0], s.pts[1]], [s.pts[s.pts.length-2], s.pts[s.pts.length-1]]]; }
+  // the pen's whole performance: fly in, write every stroke (hopping between them), then lift away to rest
+  function planTimeline(strokes, box, duration){
+    var rest = [box.x + box.w + 70, box.y + box.h * .26], start = [rest[0] + 2400, rest[1] - 1500], segs = [];
+    var ink = strokes.reduce(function(s, k){ return s + k.len; }, 0), speed = ink / Math.max(.4, duration), t = 0, at = start;
+    function fly(to, h0, h1, dur, arc){ segs.push({kind:'fly', from:at, to:to, h0:h0, h1:h1, arc:arc, t0:t, t1:t + dur}); t += dur; at = to; }
+    strokes.forEach(function(s, i){
+      var e = ends(s), a = e[0], b = e[1];
+      if (i === 0) fly(a, 4, 0, .9, 0);
+      else { var dist = Math.hypot(a[0] - at[0], a[1] - at[1]); fly(a, 0, 0, Math.min(.42, Math.max(.14, dist / (speed * 1.7))), Math.min(1, .08 + dist / 1400)); }
+      var dur = s.len / speed; segs.push({kind:'draw', i:i, t0:t, t1:t + dur}); t += dur; at = b;
+    });
+    var writeEnd = t; fly(rest, 0, .55, .75, .4);
+    return {segs:segs, total:t, writeEnd:writeEnd, rest:rest, start:start};
+  }
+  function smooth(t){ return t * t * (3 - 2 * t); }
+  function drawEase(t){ var c = Math.min(1, Math.max(0, t)); return c * .78 + smooth(c) * .22; }
+  function penAt(plan, strokes, t){
+    var ink = strokes.map(function(){ return 0; }), state = null;
+    plan.segs.forEach(function(s){
+      if (s.kind === 'draw' && t >= s.t1) ink[s.i] = 1;
+      if (state || t > s.t1) return;
+      var u = Math.min(1, Math.max(0, (t - s.t0) / (s.t1 - s.t0 || 1)));
+      if (s.kind === 'draw') { var p = drawEase(u); ink[s.i] = p; var q = pointAt(strokes[s.i], p * strokes[s.i].len); state = {x:q[0], y:q[1], lift:0, ink:ink}; }
+      else { var e = s.h0 > 1 ? 1 - Math.pow(1 - u, 3) : smooth(u);
+        state = {x:s.from[0] + (s.to[0] - s.from[0]) * e, y:s.from[1] + (s.to[1] - s.from[1]) * e, lift:s.h0 + (s.h1 - s.h0) * e + Math.sin(Math.PI * u) * s.arc, ink:ink}; }
+    });
+    return state || {x:plan.rest[0], y:plan.rest[1], lift:.55, ink:ink};
+  }
+
+  var layout = layoutWord(WORD), strokes = layout.strokes, box = layout.box, plan = planTimeline(strokes, box, DURATION);
+  var padX = 150, padY = 150, vb = {x:box.x - padX, y:box.y - padY, w:box.w + padX * 2 + 140, h:box.h + padY * 2};
+  root.style.setProperty('--spf-ar', String(vb.w / vb.h));
+  svg.setAttribute('viewBox', vb.x + ' ' + vb.y + ' ' + vb.w + ' ' + vb.h);
+  var inkPaths = strokes.map(function(s){ return '<path d="' + s.d + '" pathLength="1000" stroke-dasharray="1000 1000" stroke-dashoffset="1000"/>'; }).join('');
+  svg.innerHTML =
+    '<defs>' +
+      '<linearGradient id="spf-ink" gradientUnits="userSpaceOnUse" x1="' + box.x + '" y1="0" x2="' + (box.x + box.w) + '" y2="0"><stop offset="0" stop-color="#A68FC4"/><stop offset="1" stop-color="#502F4C"/></linearGradient>' +
+      '<linearGradient id="spf-body" gradientUnits="userSpaceOnUse" x1="0" y1="' + -RAD + '" x2="0" y2="' + RAD + '"><stop offset="0" style="stop-color:var(--spf-pen-lo)"/><stop offset=".1" style="stop-color:var(--spf-pen-mid)"/><stop offset=".3" style="stop-color:var(--spf-pen-hi)"/><stop offset=".55" style="stop-color:var(--spf-pen-mid)"/><stop offset=".84" style="stop-color:var(--spf-pen-lo)"/><stop offset="1" style="stop-color:var(--spf-pen-edge)"/></linearGradient>' +
+      '<linearGradient id="spf-nib" gradientUnits="userSpaceOnUse" x1="0" y1="-9" x2="0" y2="9"><stop offset="0" stop-color="#9a9a98"/><stop offset=".35" stop-color="#d9d9d6"/><stop offset="1" stop-color="#6d6d6b"/></linearGradient>' +
+      '<linearGradient id="spf-spec" gradientUnits="userSpaceOnUse" x1="' + CONE + '" y1="0" x2="' + (CONE + 2600) + '" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".08" stop-color="#fff" stop-opacity=".95"/><stop offset="1" stop-color="#fff" stop-opacity=".6"/></linearGradient>' +
+      '<linearGradient id="spf-fade" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="2600" y2="0"><stop offset="0" stop-color="#502F4C" stop-opacity=".22"/><stop offset=".35" stop-color="#502F4C" stop-opacity=".12"/><stop offset="1" stop-color="#502F4C" stop-opacity="0"/></linearGradient>' +
+      '<filter id="spf-blur" x="-20%" y="-60%" width="140%" height="220%"><feGaussianBlur stdDeviation="34"/></filter>' +
+      '<filter id="spf-blur2" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="9"/></filter>' +
+      '<filter id="spf-wet" x="-5%" y="-5%" width="110%" height="110%"><feGaussianBlur stdDeviation="2.2"/></filter>' +
+    '</defs>' +
+    '<g class="spf-guide" aria-hidden="true" opacity=".55">' +
+      '<line x1="' + (box.x - 40) + '" y1="' + (ASCENT + 50) + '" x2="' + (box.x + box.w + 40) + '" y2="' + (ASCENT + 50) + '" stroke="#6B5B68" stroke-opacity=".45" stroke-width="3" stroke-dasharray="2 16" stroke-linecap="round"/>' +
+      '<path d="M' + (box.x - 30) + ' ' + (ASCENT - 20) + 'l44 44m0 -44l-44 44" stroke="#6B5B68" stroke-opacity=".7" stroke-width="6" stroke-linecap="round" fill="none"/>' +
+    '</g>' +
+    '<g class="spf-inkg" fill="none" stroke-linecap="round" stroke-linejoin="round">' +
+      '<g class="spf-bleed" filter="url(#spf-wet)" opacity=".2" stroke="url(#spf-ink)" stroke-width="22">' + inkPaths + '</g>' +
+      '<g class="spf-line spf-crisp" stroke="url(#spf-ink)" stroke-width="12">' + inkPaths + '</g>' +
+    '</g>' +
+    '<g class="spf-scribs spf-line" fill="none" stroke="url(#spf-ink)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"></g>' +
+    '<g aria-hidden="true" pointer-events="none">' +
+      '<g class="spf-shadow"><path d="M0 0L2600 ' + -RAD * 1.6 + 'L2600 ' + RAD * 3.2 + 'Z" fill="url(#spf-fade)" filter="url(#spf-blur)"/></g>' +
+      '<g class="spf-contact"><ellipse cx="70" cy="6" rx="80" ry="16" fill="#502F4C" fill-opacity=".26" filter="url(#spf-blur2)"/></g>' +
+      '<g class="spf-pen">' +
+        '<rect x="' + (CONE - 2) + '" y="' + -RAD + '" width="9000" height="' + RAD * 2 + '" fill="url(#spf-body)"/>' +
+        '<rect x="' + CONE + '" y="' + -RAD * .62 + '" width="9000" height="' + RAD * .16 + '" rx="' + RAD * .08 + '" fill="url(#spf-spec)" opacity=".9"/>' +
+        '<path d="M' + NIB + ' -9C' + CONE * .45 + ' ' + -RAD * .62 + ' ' + CONE * .78 + ' ' + -RAD * .98 + ' ' + CONE + ' ' + -RAD + 'L' + CONE + ' ' + RAD + 'C' + CONE * .78 + ' ' + RAD * .98 + ' ' + CONE * .45 + ' ' + RAD * .62 + ' ' + NIB + ' 9Z" fill="url(#spf-body)"/>' +
+        '<path d="M' + (NIB + 30) + ' -14C' + CONE * .5 + ' ' + -RAD * .5 + ' ' + CONE * .8 + ' ' + -RAD * .6 + ' ' + CONE + ' ' + -RAD * .62 + '" stroke="#fff" stroke-opacity=".9" stroke-width="' + RAD * .12 + '" stroke-linecap="round" fill="none"/>' +
+        '<line x1="' + CONE + '" y1="' + -RAD + '" x2="' + CONE + '" y2="' + RAD + '" style="stroke:var(--spf-pen-lo)" stroke-width="3" stroke-opacity=".7"/>' +
+        '<path d="M0 0Q2 -5 ' + NIB + ' -9L' + NIB + ' 9Q2 5 0 0Z" fill="url(#spf-nib)"/>' +
+      '</g>' +
+    '</g>';
+  var pen = svg.querySelector('.spf-pen'), sh = svg.querySelector('.spf-shadow'), ct = svg.querySelector('.spf-contact');
+  var inkG = svg.querySelector('.spf-inkg'), scrib = svg.querySelector('.spf-scribs');
+  var crisp = [].slice.call(svg.querySelectorAll('.spf-crisp path')), bleed = [].slice.call(svg.querySelectorAll('.spf-bleed path'));
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var s = {x:plan.start[0], y:plan.start[1], lift:4, angle:ANGLE, tx:plan.rest[0], ty:plan.rest[1], tl:.55, mode:'wait', t0:0};
+
+  function paint(){
+    var lift = Math.max(0, s.lift), sc = 1 + Math.min(lift, 4) * .035, off = lift * 90;
+    pen.setAttribute('transform', 'translate(' + r1(s.x) + ' ' + r1(s.y) + ') rotate(' + r1(s.angle) + ') scale(' + sc.toFixed(3) + ')');
+    sh.setAttribute('transform', 'translate(' + r1(s.x + off * .62) + ' ' + r1(s.y + off * .95) + ') rotate(' + r1(s.angle + 44) + ')');
+    sh.style.opacity = String(Math.max(.25, 1 - lift * .16));
+    ct.setAttribute('transform', 'translate(' + r1(s.x + off * .5) + ' ' + r1(s.y + off * .8) + ') rotate(' + r1(s.angle + 44) + ')');
+    ct.style.opacity = String(Math.max(0, 1 - lift * 2.2));
+  }
+  function setInk(ink){ ink.forEach(function(p, i){ var o = String(r1(1000 * (1 - p))); crisp[i].style.strokeDashoffset = o; bleed[i].style.strokeDashoffset = o; }); }
+  function stampNow(){
+    var when = '';
+    try { when = new Intl.DateTimeFormat(undefined, {day:'2-digit', month:'short', year:'numeric'}).format(new Date()); } catch (e) { when = new Date().toDateString(); }
+    stampEl.innerHTML = '<i aria-hidden="true"></i>Signed ' + when;
+  }
+  function signed(){ root.setAttribute('data-signed', ''); stampNow(); }
+
+  var raf = 0, last = 0, vx = 0, live = false;
+  function tick(now){
+    var dt = Math.min(.05, (now - last) / 1000); last = now;
+    var px = s.x;
+    if (s.mode === 'write') {
+      var t = (now - s.t0) / 1000, st = penAt(plan, strokes, t);
+      s.x = st.x; s.y = st.y; s.lift = st.lift; setInk(st.ink);
+      if (t >= plan.total) { s.mode = 'rest'; s.tx = plan.rest[0]; s.ty = plan.rest[1]; s.tl = .55; signed(); live = true; stage.setAttribute('data-live', ''); }
+    } else if (s.mode !== 'wait') {
+      var k = 1 - Math.exp(-dt * (s.mode === 'rest' ? 6 : 14));
+      s.x += (s.tx - s.x) * k; s.y += (s.ty - s.y) * k;
+      var breathe = s.mode === 'rest' ? Math.sin(now / 900) * .07 : 0;
+      s.lift += (s.tl + breathe - s.lift) * (1 - Math.exp(-dt * 10));
+    }
+    // lean into the direction of travel a little, like a wrist does
+    vx += ((s.x - px) / Math.max(dt, .001) - vx) * .15;
+    s.angle += (ANGLE + Math.max(-6, Math.min(6, vx * .0016)) - s.angle) * .2;
+    paint();
+    raf = requestAnimationFrame(tick);
+  }
+  function begin(){ if (s.mode !== 'wait') return; s.mode = 'write'; s.t0 = performance.now(); }
+  function run(){
+    cancelAnimationFrame(raf);
+    s.mode = 'wait'; s.x = plan.start[0]; s.y = plan.start[1]; s.lift = 4;
+    root.removeAttribute('data-signed'); live = false; stage.removeAttribute('data-live');
+    if (reduce.matches) {
+      s.mode = 'rest'; s.x = plan.rest[0]; s.y = plan.rest[1]; s.lift = .55;
+      setInk(strokes.map(function(){ return 1; })); paint(); signed(); return;
+    }
+    setInk(strokes.map(function(){ return 0; })); paint();
+    last = performance.now(); raf = requestAnimationFrame(tick);
+    if (!('IntersectionObserver' in window)) { begin(); return; }
+    var io = new IntersectionObserver(function(entries){
+      if (entries.some(function(e){ return e.isIntersecting; })) { begin(); io.disconnect(); }
+    }, {threshold:.35});
+    io.observe(stage);
+  }
+
+  // after signing, the pen follows a mouse or stylus, and pressing writes; that ink dries and fades
+  var path = null, pts = [];
+  function toSvg(e){ var m = svg.getScreenCTM(); if (!m) return null; var p = new DOMPoint(e.clientX, e.clientY).matrixTransform(m.inverse()); return [p.x, p.y]; }
+  function usable(e){ return live && e.pointerType !== 'touch'; }
+  stage.addEventListener('pointermove', function(e){
+    if (!usable(e)) return; var p = toSvg(e); if (!p) return;
+    if (s.mode === 'rest') s.mode = 'follow';
+    if (s.mode !== 'follow' && s.mode !== 'draw') return;
+    s.tx = p[0]; s.ty = p[1]; if (s.mode === 'follow') s.tl = .7;
+    if (s.mode === 'draw' && path) {
+      var lp = pts[pts.length-1]; if (Math.hypot(p[0] - lp[0], p[1] - lp[1]) < 6) return;
+      pts.push(p);
+      var d = 'M' + r1(pts[0][0]) + ' ' + r1(pts[0][1]);
+      for (var i = 1; i < pts.length - 1; i++) d += 'Q' + r1(pts[i][0]) + ' ' + r1(pts[i][1]) + ' ' + r1((pts[i][0] + pts[i+1][0]) / 2) + ' ' + r1((pts[i][1] + pts[i+1][1]) / 2);
+      path.setAttribute('d', d + 'L' + r1(p[0]) + ' ' + r1(p[1]));
+    }
+  });
+  stage.addEventListener('pointerdown', function(e){
+    if (!usable(e) || e.button !== 0 || e.target.closest('button')) return;
+    var p = toSvg(e); if (!p) return;
+    e.preventDefault(); if (stage.setPointerCapture) stage.setPointerCapture(e.pointerId);
+    s.mode = 'draw'; s.tx = p[0]; s.ty = p[1]; s.tl = 0; pts = [p];
+    path = document.createElementNS(NS, 'path'); path.setAttribute('class', 'spf-scrib');
+    path.setAttribute('d', 'M' + r1(p[0]) + ' ' + r1(p[1]) + 'l0.1 0'); scrib.appendChild(path);
+  });
+  function up(){
+    if (s.mode !== 'draw') return;
+    s.mode = 'follow'; s.tl = .7; var done = path; path = null;
+    if (done) { setTimeout(function(){ done.setAttribute('data-dry', ''); }, 1600); setTimeout(function(){ done.remove(); }, 3200); }
+  }
+  stage.addEventListener('pointerup', up); stage.addEventListener('pointercancel', up);
+  stage.addEventListener('pointerleave', function(){ if (s.mode !== 'follow') return; s.mode = 'rest'; s.tx = plan.rest[0]; s.ty = plan.rest[1]; s.tl = .55; });
+  again.addEventListener('click', function(){
+    if (s.mode === 'write' || s.mode === 'wait') return;
+    // lift away, let the old ink fade, then sign afresh from the corner
+    s.mode = 'rest'; s.tx = plan.start[0]; s.ty = plan.start[1]; s.tl = 4; inkG.style.opacity = '0';
+    setTimeout(function(){ inkG.style.opacity = ''; run(); }, 520);
+  });
+  run();
+})();
+/* spf:end */
 /* msw:start · More Selected Work: the outfit-app card opens Wearwise in the Playground */
 document.addEventListener('click', function(e){
   var a = e.target.closest('.msw-card[data-pg-open]'); if (!a) return;
